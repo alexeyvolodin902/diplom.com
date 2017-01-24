@@ -1,0 +1,226 @@
+* {
+  padding: 0;
+  margin: auto; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+a {
+  text-decoration: none; }
+
+body {
+  width: 100%;
+  min-width: 1000px;
+  background-color: #bbbbbb; }
+
+main {
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  width: 1000px;
+  min-height: 100vh;
+  height: 100%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
+
+.navButton {
+  color: white;
+  background-color: #999;
+  width: 100px;
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 7px;
+  margin: 10px; }
+
+#buttonInSite, #buttonExit, #buttonOnPage {
+  float: right; }
+
+.navButton:hover, #backToSite:hover {
+  background-color: #555; }
+
+#buttonOnPage {
+  width: 240px; }
+
+#errorSign {
+  color: red; }
+
+#backToSite {
+  background-color: #999;
+  width: 150px;
+  display: block;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 7px;
+  color: white;
+  margin-bottom: 50px; }
+
+#signIn {
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 300px; }
+  #signIn #login, #signIn #password {
+    width: 250px;
+    height: 30px;
+    font-size: 14pt;
+    font-weight: 300; }
+  #signIn label {
+    font-size: 16pt; }
+  #signIn form h3 {
+    font-size: 12pt;
+    margin-bottom: 20px;
+    font-weight: 400; }
+  #signIn #button {
+    border: none;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: 300;
+    height: 40px;
+    width: 254px;
+    background-color: #b83f0a;
+    color: white;
+    margin-top: 50px; }
+
+#mainMenu {
+  margin-top: 50px;
+  text-align: center;
+  padding-top: 30px; }
+  #mainMenu span {
+    font-weight: 100;
+    font-size: 17pt; }
+  #mainMenu #menuContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+  #mainMenu .controlButton {
+    line-height: 150px;
+    display: block;
+    font-size: 17pt;
+    font-weight: 100;
+    width: 306px;
+    background-color: #b83f0a;
+    color: white;
+    height: 150px;
+    text-align: center;
+    margin: 10px; }
+  #mainMenu .controlButton:hover {
+    background-color: #990000; }
+
+.headerMenu {
+  font-size: 20pt;
+  text-align: center;
+  padding: 30px 0; }
+
+.controlSlider {
+  margin: 0 100px;
+  padding-top: 30px; }
+  .controlSlider span {
+    float: left;
+    font-size: 16pt; }
+  .controlSlider .editButton {
+    margin: 10px 0 20px 0;
+    background-color: #b83f0a;
+    width: 150px;
+    display: inline-block;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px; }
+  .controlSlider .editButton:nth-child(odd):hover {
+    background-color: red; }
+  .controlSlider .editButton:nth-child(even):hover {
+    background-color: green; }
+  .controlSlider .slide {
+    text-align: center;
+    padding: 10px; }
+    .controlSlider .slide img {
+      height: 250px;
+      width: 750px;
+      margin: 20px 0; }
+  .controlSlider .slide:nth-child(even) {
+    background-color: #eee; }
+  .controlSlider .slide:nth-child(odd) {
+    background-color: #ddd; }
+
+.addSlide {
+  display: block;
+  text-align: center;
+  height: 50px;
+  background-color: green;
+  width: 200px;
+  margin: 30px auto;
+  color: white;
+  border-radius: 10px;
+  line-height: 50px;
+  font-size: 16pt; }
+
+.addSlide:hover, #buttonAdd:hover {
+  background-color: darkgreen; }
+
+.formAddSlide {
+  text-align: center;
+  display: none; }
+  .formAddSlide p {
+    margin-bottom: 20px; }
+  .formAddSlide #head {
+    width: 600px;
+    height: 30px;
+    font-size: 14pt; }
+  .formAddSlide #desc {
+    width: 600px;
+    height: 200px;
+    font-size: 14pt;
+    border: 1px solid #ccc; }
+  .formAddSlide #errorHead, .formAddSlide #errorDesc, .formAddSlide #errorFile {
+    color: red;
+    font-size: 10pt;
+    display: none; }
+
+#buttonAdd {
+  width: 200px;
+  height: 50px;
+  background-color: green;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-size: 16pt;
+  margin: 10px auto 50px auto; }
+
+#loader {
+  position: fixed;
+  height: 100vh;
+  color: white;
+  font-size: 24pt;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(1, 1, 1, 0.7); }
+
+.formEditSlide {
+  text-align: center; }
+  .formEditSlide h3 {
+    padding: 50px; }
+  .formEditSlide p {
+    margin-bottom: 20px; }
+  .formEditSlide #head {
+    width: 600px;
+    height: 30px;
+    font-size: 14pt; }
+  .formEditSlide #desc {
+    width: 600px;
+    height: 200px;
+    font-size: 14pt;
+    border: 1px solid #ccc; }
+  .formEditSlide #errorHead, .formEditSlide #errorDesc, .formEditSlide #errorFile {
+    color: red;
+    font-size: 10pt;
+    display: none; }
+
+/*# sourceMappingURL=adminStyle.css.map */

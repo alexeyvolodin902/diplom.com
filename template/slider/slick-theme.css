@@ -1,0 +1,119 @@
+
+.slider {
+    background-color: black;
+    display: none;
+}
+
+.slideText {
+    width: 400px;
+    margin: 30px 50px;
+    padding: 40px 20px;
+    text-align: center;
+    position: absolute;
+    z-index: 200;
+    color:white;
+}
+.slideText h3{
+    font-family: "Poiret One", sans-serif;
+    font-size: 30pt;
+    font-weight: 100;
+}
+.slideText p{
+    font-size: 15pt;
+}
+.slider img {
+    width: 100%;
+    opacity: 0.3;
+    height: 500px;
+
+}
+@media (max-width: 900px) {
+    .slideText {
+        width: 300px;
+        border: none;
+        margin: 0 4.6%;
+    }
+
+
+}
+/* Dots */
+.slick-dots
+{
+    position: absolute;
+    margin-top: -40px;
+    display: block;
+    width: 100%;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 10px;
+    height: 10px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+border: 2px solid white;
+    border-radius: 50%;
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 10px;
+    height: 10px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    background-color: #333;
+    opacity: .75;
+    color: black;
+}
