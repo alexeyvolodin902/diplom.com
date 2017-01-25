@@ -1,449 +1,94 @@
-@charset "UTF-8";
 * {
-  padding: 0;
-  margin: auto; }
-
-html {
-  position: relative;
-  min-height: 100%; }
-
-body {
-  width: 100%;
-  min-width: 900px;
-  font-weight: lighter;
-  margin: 0 0 44px;
-  /* bottom = footer height */ }
-
-ul {
-  list-style: none;
   margin: 0;
-  padding-left: 0; }
+  padding: 0; }
 
 a {
   text-decoration: none;
-  color: white; }
+  color: black; }
 
-main {
-  font-family: 'Open Sans', sans-serif; }
+html {
+  font-family: Arial;
+  min-height: 100%;
+  min-width: 100%;
+  background: url("../img/background.png") fixed; }
+
+body {
+  width: 1000px;
+  margin: 0 auto; }
+
+#signIn {
+  display: block;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  background-color: gray;
+  color: white;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 10px; }
+
+#signIn:hover {
+  background-color: lightgray; }
 
 header {
-  background-image: linear-gradient(270deg, #7F2906 0%, #EF550C 100%);
-  height: 160px;
-  width: 100%; }
-  header #logo {
-    padding-left: 10px;
-    padding-top: 10px;
-    float: left; }
-  header address, header #phone {
-    background-color: white;
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-size: 15pt;
-    color: black;
-    padding: 5px; }
-  header #phone {
-    position: absolute;
-    top: 0;
-    right: 0; }
-  header menu ul {
-    font-family: "Poiret One", sans-serif;
-    padding-top: 40px;
-    display: -webkit-flex;
-    /* Safari */
-    display: flex; }
-    header menu ul li a {
-      display: block;
-      font-size: 15pt;
-      padding: 10px 12px; }
-    header menu ul a:hover, header menu ul .active {
-      border: 1px solid white;
-      padding: 9px 11px; }
-
-footer {
-  font-family: "Poiret One", sans-serif;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 46px;
-  width: 100%;
-  background-image: linear-gradient(270deg, #7F2906 0%, #EF550C 100%); }
-  footer menu {
-    padding: 5px 0; }
-    footer menu ul {
-      display: -webkit-flex;
-      /* Safari */
-      display: flex; }
-      footer menu ul li a {
-        display: block;
-        font-size: 10pt;
-        padding: 10px 12px; }
-      footer menu ul a.active, footer menu ul a:hover {
-        border: 1px solid white;
-        padding: 9px 11px; }
-
-#doRecord {
-  text-align: center;
-  display: block;
-  width: 25%;
-  background-image: linear-gradient(270deg, #7F2906 0%, #EF550C 100%);
-  margin: 20px auto 20px auto;
-  padding: 15px 20px; }
-
-#service-carts-container {
-  width: 100%;
-  display: -webkit-inline-flex;
-  display: inline-flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-justify-content: center;
-  justify-content: center;
-  margin-bottom: 15px; }
-
-.service-cart {
-  margin: 5px;
+  padding: 20px 0 0 0;
   text-align: center; }
-  .service-cart p {
-    position: absolute;
-    margin-top: 214px;
-    background-color: rgba(10, 10, 10, 0.3);
-    width: 295px;
-    padding: 20px 0;
-    color: white;
-    font-size: 15pt;
-    font-style: normal; }
+  header #logo #logoName {
+    font-size: 20pt;
+    font-weight: bold; }
+  header #logo #logoDesc {
+    font-size: 8pt; }
+  header #logo img {
+    height: 100px; }
 
-/*акции*/
-.wrapperStock {
-  background-color: #eee; }
-
-.stock {
-  text-align: center;
-  width: 100%;
-  padding-top: 5px;
-  margin: 0 auto;
-  overflow: hidden;
-  display: -webkit-flex;
-  /* Safari */
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  /* Safari */
-  flex-wrap: wrap;
-  -webkit-justify-content: center;
-  /* Safari */
-  justify-content: center; }
-  .stock .cart_stock {
-    text-align: center;
-    width: 500px;
-    margin: 5px;
-    background-color: white; }
-    .stock .cart_stock img {
-      width: 500px;
-      height: 300px; }
-    .stock .cart_stock p {
-      padding: 10px 20px;
-      text-align: justify; }
-    .stock .cart_stock .more {
-      text-align: right;
-      margin: -20px 10px 10px 0; }
-      .stock .cart_stock .more a {
-        color: #7F2906;
-        font-weight: 400; }
-
-.oneStock {
-  text-align: center;
-  width: 70%;
-  font-size: 15pt;
-  margin: 0 auto 100px auto; }
-  .oneStock p {
-    text-align: left; }
-  .oneStock img {
-    margin: 0 auto;
-    height: 400px;
-    width: 700px; }
-
-#backToStock {
-  background-color: #b83f0a;
-  display: block;
-  padding: 15px 20px;
-  margin: 10px auto;
-  width: 200px;
-  text-align: center;
-  font-size: 15pt; }
-
-.pagination {
-  text-align: center;
-  margin-bottom: 30px; }
-  .pagination ul {
-    display: inline-flex;
-    display: -webkit-inline-flex;
-    /* Safari */
-    width: auto;
-    margin: 20px 0 30px 0; }
-    .pagination ul li {
-      width: 40px;
-      height: 40px;
-      background-color: gray;
-      margin: 5px; }
-      .pagination ul li a {
-        margin-top: 10px;
-        display: block;
-        height: 100%; }
-    .pagination ul li:not(.active):hover {
-      background-color: #bbb; }
-  .pagination .active {
-    background-color: #b83f0a; }
-
-/*Отзывы*/
-.containerDoReview {
-  background: url("../img/backgrounds/backReview2.jpg") 0 0 no-repeat;
-  /* Добавляем фон */
-  background-size: cover;
-  height: 450px;
-  overflow: hidden; }
-  .containerDoReview #prevArrow {
-    margin: 10% 0 10% 80px;
-    float: left;
-    cursor: pointer; }
-  .containerDoReview #nextArrow {
-    margin: 10% 0 10% 30px;
-    cursor: pointer; }
-  .containerDoReview #doReview {
-    text-align: center;
-    display: block;
-    width: 25%;
-    background-image: linear-gradient(270deg, #7F2906 0%, #EF550C 100%);
-    padding: 15px 20px;
-    margin-left: 195px;
-    position: absolute;
-    top: 530px; }
-  .containerDoReview .bestReviews {
-    display: none;
-    width: 500px;
-    float: left;
-    color: white;
-    margin: 70px 0 0 20px; }
-    .containerDoReview .bestReviews .bestReview .reviewText {
-      text-align: center;
-      font-size: 16pt;
-      padding-bottom: 20px; }
-    .containerDoReview .bestReviews .bestReview .reviewDesc {
-      text-align: center;
-      font-size: 14pt; }
-
-.reviews {
-  overflow: hidden;
-  background-color: #eee; }
-  .reviews .review {
-    margin: 30px auto;
-    width: 60%;
-    border: 1px solid gainsboro;
-    background-color: #f9f9f9; }
-    .reviews .review .review_header {
-      text-align: justify;
-      background-color: #b83f0a;
+main {
+  margin: 30px 0 0 0; }
+  main menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    main menu .menuItem {
+      font-weight: bold;
+      font-size: 15pt;
       color: white;
-      padding: 10px 0;
-      font-family: "Poiret One", sans-serif; }
-      .reviews .review .review_header .review_name {
-        font-size: 19pt;
-        margin-left: 10px; }
-      .reviews .review .review_header .review_date {
-        float: right;
-        font-size: 14pt;
-        margin: 4px 10px; }
-    .reviews .review p {
-      padding: 20px 30px; }
-
-#nameError, #emailError, #reviewError {
-  color: #590614;
-  font-size: 14pt; }
-
-.formReview {
-  display: none;
-  width: 50%;
-  margin: 40px 0 0 60px;
-  text-align: center; }
-  .formReview #thank {
-    color: white;
-    font-size: 25pt;
-    margin-top: 50px; }
-  .formReview span {
-    color: white;
-    font-size: 15pt; }
-  .formReview form p {
-    padding: 0 0 20px 0; }
-  .formReview form input, .formReview form textarea {
-    padding: 5px 10px; }
-  .formReview #name, .formReview #email, .formReview #review {
-    width: 100%;
-    min-width: 500px;
-    font-size: 15pt;
-    opacity: 0.5; }
-  .formReview #name:focus, .formReview #email:focus, .formReview #review:focus {
-    opacity: 1;
-    outline: none; }
-  .formReview #name, .formReview #email {
-    height: 30px; }
-  .formReview #review {
-    height: 150px; }
-  .formReview #button {
-    height: 44px;
-    width: 50%;
-    font-family: "Poiret One", sans-serif;
-    font-size: 25pt;
-    cursor: pointer; }
-  .formReview #closeForm {
-    position: absolute;
-    left: 10px;
-    margin-top: -20px;
-    cursor: pointer;
-    opacity: 0.5; }
-  .formReview #closeForm:hover {
-    opacity: 1; }
-
-/*альбом*/
-.albumNav {
-  width: 90%;
-  padding-bottom: 10px; }
-  .albumNav img {
-    height: 100px;
-    margin: 5px; }
-
-#prevArrowNav {
-  float: left;
-  margin: 40px 20px 0 20px;
-  cursor: pointer; }
-
-#nextArrowNav {
-  float: right;
-  margin: -80px 20px 0 20px;
-  cursor: pointer; }
-
-.album img {
-  height: 500px;
-  margin-bottom: 5px;
-  margin-top: 10px; }
-
-#albumName {
-  margin-top: 7px;
-  text-align: center;
-  font-size: 20pt; }
-
-.backToAlbums {
-  background-color: #b83f0a;
-  margin: 0 auto 60px auto;
-  display: block;
-  padding: 15px 20px;
-  width: 200px;
-  text-align: center; }
-
-/*контакты*/
-.containerContacts {
-  height: 450px;
-  background: url("../img/backgrounds/backContacts.png") 0 0 no-repeat;
-  /* Добавляем фон */
-  background-size: cover;
-  overflow: hidden; }
-  .containerContacts .contactsFormError {
-    color: red;
-    font-size: 10pt; }
-  .containerContacts #recordQuestion {
-    display: none; }
-  .containerContacts #buttonQuestion {
-    margin-top: 35px;
+      width: 30%;
+      margin: 5px;
+      height: 170px;
+      text-align: center;
+      opacity: 0.85; }
+      main menu .menuItem div {
+        margin-top: 70px; }
+    main menu .menuItem:nth-child(2) > div {
+      margin-top: 48px; }
+    main menu .menuItem:nth-child(3) > div {
+      margin-top: 60px; }
+    main menu .firstRow {
+      background-color: #7bad1a; }
+    main menu .secondRow {
+      background-color: #6c4a03; }
+    main menu .menuItem:hover {
+      opacity: 1;
+      -webkit-transform: scale(1.03);
+      -moz-transform: scale(1.03);
+      -o-transform: scale(1.03); }
+  main section {
+    background: rgba(250, 250, 250, 0.7);
     text-align: center;
+    margin: 30px auto 40px auto;
+    width: 92%;
+    border-radius: 10px; }
+    main section h1 {
+      font-size: 20pt;
+      margin: 30px 0; }
+  main ul {
+    text-align: left;
+    margin: 0 auto;
+    width: 70%;
     font-size: 15pt;
-    height: 50px;
-    width: 250px;
-    padding-top: 20px;
-    background-color: #b83f0a;
-    color: white;
-    cursor: pointer; }
-  .containerContacts .contacts {
-    position: absolute;
-    left: 0;
-    margin: 30px 0 0 110px; }
-    .containerContacts .contacts address {
-      font-style: normal;
-      text-align: center;
-      font-size: 20pt; }
-    .containerContacts .contacts .phone {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 24pt; }
-      .containerContacts .contacts .phone a {
-        color: black;
-        font-weight: 500; }
-    .containerContacts .contacts .workTime {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 17pt;
-      font-weight: 500; }
-      .containerContacts .contacts .workTime p {
-        font-size: 15pt;
-        font-weight: 100; }
-  .containerContacts .feedback {
-    font-size: 15pt; }
-    .containerContacts .feedback #thank {
-      color: #b83f0a;
-      font-size: 12pt; }
-    .containerContacts .feedback form {
-      text-align: center; }
-      .containerContacts .feedback form #name, .containerContacts .feedback form #email {
-        width: 400px;
-        height: 30px;
-        font-size: 15pt;
-        text-align: center; }
-      .containerContacts .feedback form #question {
-        width: 400px;
-        height: 100px;
-        border: 1px solid #ccc;
-        font-size: 10pt; }
-      .containerContacts .feedback form #button {
-        height: 30px;
-        width: 200px;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 14pt; }
-
-/*Услуги*/
-.containerServices {
-  overflow: hidden;
-  min-height: 100vh;
-  background: url("../img/backgrounds/backService.jpg") 0 0 fixed no-repeat black;
-  /* Добавляем фон */
-  background-size: cover; }
-  .containerServices .service {
-    background-color: rgba(255, 255, 255, 0.8);
-    width: 500px;
-    margin: 20px 10px 10px 120px;
-    text-align: center; }
-    .containerServices .service .headerService {
-      color: #b83f0a;
-      background-color: white;
-      height: 30px;
-      font-size: 15pt;
-      font-weight: 400; }
-    .containerServices .service ul li {
-      border-bottom: 1px solid white;
-      min-height: 40px;
-      margin-top: 15px;
-      font-weight: 400; }
-
-/*адаптация*/
-@media (max-width: 900px) {
-  #logo {
-    display: none; }
-
-  #doRecord {
-    width: 40%; }
-
-  .service-cart {
-    margin: 35px; } }
-@media (min-width: 1400px) {
-  header menu ul li a {
-    font-size: 20pt; }
-
-  footer menu ul li a {
-    font-size: 15pt; } }
+    list-style: circle; }
+    main ul li {
+      margin: 10px 0 0 40px; }
 
 /*# sourceMappingURL=styles.css.map */

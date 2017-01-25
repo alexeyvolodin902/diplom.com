@@ -1,15 +1,23 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alexeivolodin
+ * Date: 25.01.17
+ * Time: 13:30
+ */
+?>
 <!DOCTYPE html>
 <html lang="кг">
 <head>
     <meta charset="UTF-8">
     <title>НижТехИнвентаризация</title>
-    <link href="styles.css" rel="stylesheet">
+    <link href="../template/styles/styles.css" rel="stylesheet">
 </head>
 <body>
 <a href="#" id="signIn">Вход</a>
 <header>
     <div id="logo">
-        <img src="logo.svg" alt="НижТехИнвентаризация">
+        <img src="../template/img/logo.svg" alt="НижТехИнвентаризация">
         <br>
         <span id="logoName">НижТехИнвентаризация</span>
         <br>
@@ -28,7 +36,7 @@
             <div>Справка о регистрации собственности</div>
         </a>
         <a href="#" class="menuItem secondRow">
-           <div>Узнать статус заявки</div>
+            <div>Узнать статус заявки</div>
         </a>
         <a href="#" class="menuItem secondRow">
             <div>Задать вопрос</div>
