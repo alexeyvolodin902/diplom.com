@@ -1,3 +1,4 @@
+/*Общие стили*/
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +21,7 @@ body {
   margin: 0 auto;
 }
 
+/*Главная страница клиента*/
 #signIn {
   display: block;
   position: absolute;
@@ -119,4 +121,58 @@ main {
     }
   }
 
+}
+
+/*Панель администратора*/
+#backToSite {
+  text-align: center;
+  margin: 30px auto;
+  display: block;
+  width: 300px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  background-color: gray;
+  color: white;
+}
+
+#backToSite:hover {
+  background-color: lightgray;
+}
+
+#authForm {
+  width: 100%;
+  text-align: center;
+  font-size: 18pt;
+  #authFormError {
+    color: red;
+    font-size: 15pt;
+    background: rgba(250, 250, 250, 0.7);
+    padding: 10px;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 15px;
+    #extra {
+      font-style: italic;
+      font-size: 12pt;
+      color: black;
+    }
+  }
+  input {
+    height: 30px;
+    width: 300px;
+    font-size: 15pt;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+  }
+  button {
+    margin-top: 25px;
+    height: 30px;
+    width: 100px;
+    font-size: 15pt;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+  }
 }

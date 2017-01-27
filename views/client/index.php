@@ -5,25 +5,11 @@
  * Date: 25.01.17
  * Time: 13:30
  */
+
+
+include_once ROOT.'/views/layouts/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="кг">
-<head>
-    <meta charset="UTF-8">
-    <title>НижТехИнвентаризация</title>
-    <link href="../template/styles/styles.css" rel="stylesheet">
-</head>
-<body>
-<a href="#" id="signIn">Вход</a>
-<header>
-    <div id="logo">
-        <img src="../template/img/logo.svg" alt="НижТехИнвентаризация">
-        <br>
-        <span id="logoName">НижТехИнвентаризация</span>
-        <br>
-        <span id="logoDesc">ГОСУДАРСТВЕННОЕ ПРЕДПРИЯТИЕ НИЖЕГОРОДСКОЙ ОБЛАСТИ</span>
-    </div>
-</header>
+<a href="/admin" id="signIn">Вход</a>
 <main>
     <menu>
         <a href="#" class="menuItem firstRow">
@@ -55,5 +41,6 @@
         </ul>
     </section>
 </main>
-</body>
-</html>
+<?php
+include_once ROOT.'/views/layouts/footer.php';
+?>

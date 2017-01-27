@@ -16,7 +16,7 @@ class Router
 	private function getURI()
 	{
 		if (!empty($_SERVER['REQUEST_URI'])) {
-		return trim($_SERVER['REQUEST_URI'], '/');
+			return trim($_SERVER['REQUEST_URI'], '/');
 		}
 	}
 
@@ -34,7 +34,7 @@ class Router
 
 				$internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
-			/*echo '<br>Нужно сформулировать: '.$internalRoute.'<br>'; */
+				/*echo '<br>Нужно сформулировать: '.$internalRoute.'<br>'; */
 
 				$segments = explode('/', $internalRoute);
 				$controllerName = array_shift($segments).'Controller';
