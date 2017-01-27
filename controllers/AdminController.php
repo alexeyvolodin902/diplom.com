@@ -16,8 +16,11 @@ Class AdminController
         if (!isset($_SESSION['access']))
             header("Location:/auth");
         $access = $_SESSION['access'];
-        if ($access == 0)
-            require_once(ROOT . '/views/admin/index.php');
+        $userInfo = Users::getUserInfo($_SESSION['login']);
+
+        
+        if ($access == 1)
+            require_once(ROOT . '/views/admin/indexLevel1.php');
 
         return true;
 
@@ -25,7 +28,8 @@ Class AdminController
 
     public function actionAuth()
     {
-
+        session_start();
+        session_destroy();
         $error = false;
         if (isset($_POST['login']) && isset($_POST['password'])) {
             $login = $_POST['login'];
@@ -34,6 +38,7 @@ Class AdminController
             if ($access > 0) {
                 session_start();
                 $_SESSION['access'] = $access;
+                $_SESSION['login'] = $login;
                 header("Location:/admin");
             } else $error = true;
         }
@@ -41,16 +46,6 @@ Class AdminController
         require_once(ROOT . '/views/admin/auth.php');
         return true;
 
-    }
-
-    public function actionExit()
-    {
-
-        session_start();
-        session_destroy();
-        $error= false;
-        header("Location:/auth");
-        return true;
     }
 
 

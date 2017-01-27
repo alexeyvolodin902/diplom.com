@@ -9,7 +9,7 @@
 
 include_once ROOT.'/views/layouts/header.php';
 ?>
-<a href="/admin" id="signIn">Вход</a>
+<a href="/auth" id="signIn">Вход</a>
 <main>
     <menu>
         <a href="#" class="menuItem firstRow">

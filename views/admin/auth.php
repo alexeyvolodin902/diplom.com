@@ -22,7 +22,7 @@ include_once ROOT . '/views/layouts/header.php';
             <form method="post" action="/auth">
                 <label for="login">Логин</label><br><input type="text" id="login" name="login"><br>
                 <label for="password">Пароль</label> <br><input type="password" id="password" name="password"><br>
-                <button id="button">Войти</button>
+                <button class="greenButton">Войти</button>
             </form>
         </div>
     </main>

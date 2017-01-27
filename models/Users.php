@@ -17,5 +17,15 @@ class Users
         return ($result->fetchColumn());
     }
 
-   
+    public static function getUserInfo($login)
+    {
+
+        $db = DB::getConnection();
+        $sql = "SELECT FIO,position, office FROM users WHERE login=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($login));
+        return $result->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 }
