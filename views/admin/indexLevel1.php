@@ -17,7 +17,7 @@ include_once ROOT . '/views/layouts/header.php';
             <?php echo $userInfo['position'] ?>
             <br>
 
-            <?php echo $userInfo['office'] ?>
+            <?php echo $userRegion?>
         </div>
         <a href="auth" id="logoutButton" class="redButton">Выйти</a>
 

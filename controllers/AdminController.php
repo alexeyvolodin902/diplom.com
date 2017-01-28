@@ -12,12 +12,13 @@ Class AdminController
 
     public function actionIndex()
     {
+        $title = "Панель управления";
         session_start();
         if (!isset($_SESSION['access']))
             header("Location:/auth");
         $access = $_SESSION['access'];
         $userInfo = Users::getUserInfo($_SESSION['login']);
-
+        $userRegion = Regions::getNameById($userInfo['id_region']);
         
         if ($access == 1)
             require_once(ROOT . '/views/admin/indexLevel1.php');
@@ -28,6 +29,7 @@ Class AdminController
 
     public function actionAuth()
     {
+        $title = "Форма входа";
         session_start();
         session_destroy();
         $error = false;
@@ -39,6 +41,8 @@ Class AdminController
                 session_start();
                 $_SESSION['access'] = $access;
                 $_SESSION['login'] = $login;
+                
+                
                 header("Location:/admin");
             } else $error = true;
         }

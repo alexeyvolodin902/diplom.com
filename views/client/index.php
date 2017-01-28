@@ -9,7 +9,7 @@
 
 include_once ROOT.'/views/layouts/header.php';
 ?>
-<a href="/auth" id="signIn">Вход</a>
+<a href="/auth" id="signIn" class="grayButton">Вход</a>
 <main>
     <menu>
         <a href="#" class="menuItem firstRow">
@@ -24,7 +24,7 @@ include_once ROOT.'/views/layouts/header.php';
         <a href="#" class="menuItem secondRow">
             <div>Узнать статус заявки</div>
         </a>
-        <a href="#" class="menuItem secondRow">
+        <a href="/question" class="menuItem secondRow">
             <div>Задать вопрос</div>
         </a>
         <a href="#" class="menuItem secondRow">

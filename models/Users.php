@@ -14,14 +14,14 @@ class Users
         $sql = "SELECT access FROM users WHERE login=? AND password=?";
         $result = $db->prepare($sql);
         $result->execute(array($login, $password));
-        return ($result->fetchColumn());
+        return $result->fetchColumn();
     }
 
     public static function getUserInfo($login)
     {
 
         $db = DB::getConnection();
-        $sql = "SELECT FIO,position, office FROM users WHERE login=?";
+        $sql = "SELECT FIO, id_region, position FROM users WHERE login=?";
         $result = $db->prepare($sql);
         $result->execute(array($login));
         return $result->fetch(PDO::FETCH_ASSOC);
