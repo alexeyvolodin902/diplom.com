@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
     <link href="../template/styles/styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 <header>
