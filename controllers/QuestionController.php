@@ -13,4 +13,9 @@ class QuestionController
         require_once(ROOT . '/views/client/question.php');
         return true;
     }
+    
+    public function actionAddQuestion()
+    {
+        return "jr";
+    }
 }

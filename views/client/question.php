@@ -28,6 +28,11 @@ include_once ROOT . '/views/layouts/header.php';
                 <button class="greenButton">Отправить</button>
             </form>
         </div>
+        <div id="completeQuestion">
+            <h1>Спасибо за ваш вопрос!</h1>
+            <p>Наши специалисты пришлют ответ на <span id="emailSend"></span> в ближайшее время.</p>
+
+        </div>
     </main>
     <script type="text/javascript" src="../template/js/validator.min.js"></script>
     <script>
@@ -98,7 +103,7 @@ include_once ROOT . '/views/layouts/header.php';
             if (!validator.isEmail(inputEmail.val()) && flErrorEmail == false) {
                 flErrorEmail = true;
                 errorEmail.html("Пожалуйста, введите корректный email");
-               addRedBorder(inputEmail);
+                addRedBorder(inputEmail);
             }
 
             if (!flErrorName && !flErrorEmail && !flErrorQuestion) {
@@ -111,9 +116,10 @@ include_once ROOT . '/views/layouts/header.php';
                     url: "/auth",
                     data: formData
                 })
-                    .done(function (data) {
-
-                        alert("Jr");
+                    .done(function () {
+                        $("#questionForm").hide();
+                        $("#completeQuestion").show();
+                        $("#emailSend").html(inputEmail.val());
                     });
             }
         }

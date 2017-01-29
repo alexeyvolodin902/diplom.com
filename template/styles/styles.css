@@ -226,4 +226,10 @@ main {
     width: 150px;
     font-size: 15pt; }
 
+#completeQuestion {
+  display: none;
+  text-align: center; }
+  #completeQuestion span {
+    font-style: italic; }
+
 /*# sourceMappingURL=styles.css.map */

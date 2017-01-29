@@ -285,3 +285,11 @@ main {
     font-size: 15pt;
   }
 }
+
+#completeQuestion{
+  display: none;
+  text-align: center;
+  span{
+    font-style: italic;
+  }
+}

@@ -1,6 +1,7 @@
 <?php
 
 return array(
+    'addQuestion'=>'question/addQuestion',
     'question'=>'question/index',
     'auth'=>"admin/auth",
     'admin' => 'admin/index',
