@@ -13,8 +13,8 @@ include_once ROOT . '/views/layouts/header.php';
         <div id="questionForm">
             <form method="post" enctype="multipart/form-data" method="POST"
                   action="javascript:void(null);"
-                  onsubmit="call()">
-                <label for="name">Имя</label><br><input type="text" id="name" name="name">
+                  onsubmit="send()">
+                <label for="name">Имя и фамилия</label><br><input type="text" id="name" name="name">
                 <div class="errorForm" id="questionFormErrorName"><br></div>
 
                 <label for="email">Email</label><br><input type="email" id="email" name="email">
@@ -42,21 +42,34 @@ include_once ROOT . '/views/layouts/header.php';
             return !(input.val() == "");
         }
 
+        function addErrorEmpty(obj) {
+            obj.html("Пожалуйста, заполните это поле");
+        }
+
+        function addRedBorder(obj) {
+            obj.css("border", "1px solid red");
+        }
+
+        function addGrayBorder(obj) {
+            obj.css("border", "1px solid #ccc");
+        }
+
+
         inputName.focusin(function () {
             errorName.html("<br>");
-            inputName.css("border", "1px solid #ccc");
+            addGrayBorder(inputName);
 
         });
         inputEmail.focusin(function () {
             errorEmail.html("<br>");
-            inputEmail.css("border", "1px solid #ccc");
+            addGrayBorder(inputEmail)
         });
         inputQuestion.focusin(function () {
             errorQuestion.html("<br>");
-            inputQuestion.css("border", "1px solid #ccc");
+            addGrayBorder(inputQuestion);
         });
 
-        function call() {
+        function send() {
             errorName.html("<br>");
             errorEmail.html("<br>");
             errorQuestion.html("<br>");
@@ -66,27 +79,28 @@ include_once ROOT . '/views/layouts/header.php';
 
             if (!checkEmpty(inputName)) {
                 flErrorName = true;
-                errorName.html("Пожалуйста, заполните это поле");
-                inputName.css("border", "1px solid red");
+                addErrorEmpty(errorName);
+                addRedBorder(inputName);
             }
             if (!checkEmpty(inputEmail)) {
                 flErrorEmail = true;
-                errorEmail.html("Пожалуйста, заполните это поле");
-                inputEmail.css("border", "1px solid red");
+                addErrorEmpty(errorEmail);
+                addRedBorder(inputEmail);
 
             }
 
             if (!checkEmpty(inputQuestion)) {
                 flErrorQuestion = true;
-                errorQuestion.html("Пожалуйста, заполните это поле");
-                inputQuestion.css("border", "1px solid red");
+                addErrorEmpty(errorQuestion);
+                addRedBorder(inputQuestion);
             }
 
             if (!validator.isEmail(inputEmail.val()) && flErrorEmail == false) {
                 flErrorEmail = true;
                 errorEmail.html("Пожалуйста, введите корректный email");
-                inputEmail.css("border", "1px solid red");
+               addRedBorder(inputEmail);
             }
+
             if (!flErrorName && !flErrorEmail && !flErrorQuestion) {
                 var formData = new FormData($('form')[0]);
 
@@ -103,6 +117,7 @@ include_once ROOT . '/views/layouts/header.php';
                     });
             }
         }
+
     </script>
 
 
