@@ -16,4 +16,20 @@ class Regions
         $result->execute(array($id));
         return $result->fetchColumn();
     }
+    public static function getAll()
+    {
+        $regions=array();
+        $db= DB::getConnection();
+        $sql = "SELECT * FROM regions";
+        $result = $db->query($sql);
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $regions[$i]['id'] = $row['id'];
+            $regions[$i]['name'] = $row['name'];           
+            $i++;
+        }
+        return $regions;
+
+        
+    }
 }

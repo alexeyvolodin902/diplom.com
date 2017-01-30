@@ -254,11 +254,18 @@ main {
   background: rgba(250, 250, 250, 0.7);
   text-align: center;
   padding: 30px 0;
-  margin-bottom:50px;
+  margin-bottom: 50px;
   .errorForm {
     font-size: 8pt;
     padding-bottom: 10px;
     color: red;
+  }
+  select {
+    width: 500px;
+    height: 30px;
+    font-size: 12pt;
+background-color: white;
+
   }
   input, textarea {
 
@@ -287,11 +294,13 @@ main {
     font-size: 15pt;
   }
 }
-#loader{
+
+#loader {
   display: none;
- margin-top: 100px;
+  margin-top: 100px;
   text-align: center;
 }
+
 #completeQuestion {
   display: none;
   text-align: center;
