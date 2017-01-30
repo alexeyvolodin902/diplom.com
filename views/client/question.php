@@ -17,7 +17,7 @@ include_once ROOT . '/views/layouts/header.php';
                 <label for="name">Имя и фамилия</label><br><input type="text" id="name" name="name">
                 <div class="errorForm" id="questionFormErrorName"><br></div>
 
-                <label for="email">Email</label><br><input type="email" id="email" name="email">
+                <label for="email">Email</label><br><input type="text" id="email" name="email">
                 <div class="errorForm" id="questionFormErrorEmail"><br></div>
                 <label for="question">Вопрос</label> <br><textarea id="question" name="question"></textarea>
                 <div class="errorForm" id="questionFormErrorQuestion"><br></div>
@@ -28,36 +28,31 @@ include_once ROOT . '/views/layouts/header.php';
                 <button class="greenButton">Отправить</button>
             </form>
         </div>
+        <div id="loader">
+            <img src="../template/img/load.svg" height="100">
+        </div>
         <div id="completeQuestion">
-            <h1>Спасибо за ваш вопрос!</h1>
+            <h2>Спасибо за ваш вопрос!</h2>
             <p>Наши специалисты пришлют ответ на <span id="emailSend"></span> в ближайшее время.</p>
 
         </div>
+
     </main>
+
+    <script type="text/javascript" src="../template/js/jQuery.js"></script>
     <script type="text/javascript" src="../template/js/validator.min.js"></script>
+    <script type="text/javascript" src="../template/js/script.js"></script>
     <script>
+
+
         var inputName = $("#name");
         var inputEmail = $("#email");
         var inputQuestion = $("#question");
         var errorName = $("#questionFormErrorName");
         var errorEmail = $("#questionFormErrorEmail");
         var errorQuestion = $("#questionFormErrorQuestion");
-
-        function checkEmpty(input) {
-            return !(input.val() == "");
-        }
-
-        function addErrorEmpty(obj) {
-            obj.html("Пожалуйста, заполните это поле");
-        }
-
-        function addRedBorder(obj) {
-            obj.css("border", "1px solid red");
-        }
-
-        function addGrayBorder(obj) {
-            obj.css("border", "1px solid #ccc");
-        }
+        var loader = $("#loader");
+        var goHomeButton = $("#goHomeClient");
 
 
         inputName.focusin(function () {
@@ -73,6 +68,7 @@ include_once ROOT . '/views/layouts/header.php';
             errorQuestion.html("<br>");
             addGrayBorder(inputQuestion);
         });
+
 
         function send() {
             errorName.html("<br>");
@@ -100,13 +96,17 @@ include_once ROOT . '/views/layouts/header.php';
                 addRedBorder(inputQuestion);
             }
 
-            if (!validator.isEmail(inputEmail.val()) && flErrorEmail == false) {
+            if (!validator.isEmail(inputEmail.val(),{allow_utf8_local_part: false}) && flErrorEmail == false) {
                 flErrorEmail = true;
                 errorEmail.html("Пожалуйста, введите корректный email");
                 addRedBorder(inputEmail);
             }
 
             if (!flErrorName && !flErrorEmail && !flErrorQuestion) {
+                $("#questionForm").hide();
+                goHomeButton.hide();
+                loader.show();
+                
                 var formData = new FormData($('form')[0]);
 
                 $.ajax({
@@ -117,12 +117,14 @@ include_once ROOT . '/views/layouts/header.php';
                     data: formData
                 })
                     .done(function () {
-                        $("#questionForm").hide();
+                        loader.hide();
+                        goHomeButton.show();
                         $("#completeQuestion").show();
                         $("#emailSend").html(inputEmail.val());
                     });
             }
         }
+
 
     </script>
 
