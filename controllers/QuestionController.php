@@ -23,15 +23,16 @@ class QuestionController
             isset($_POST['email']) &&
             isset($_POST['question'])
         ) {
-            
-            if (isset($_FILES['addedFile'])) {
 
-                
+            $id = Questions::addQuestion($_POST['region'], $_POST['name'], $_POST['email'], $_POST['question']);
+            if (isset($_FILES['addedFile'])) {
                 $info = new SplFileInfo($_FILES['addedFile']['name']);
                 $exp = $info->getExtension();
-                $uploadFile = "media/questionFiles/file." . $exp;
+                $uploadFile = "media/questionFiles/" . $id . "." . $exp;
                 move_uploaded_file($_FILES['addedFile']['tmp_name'], $uploadFile);
-            }
+                Questions::addFileById($id,$exp);
+            } 
+            
 
         }
         return true;
