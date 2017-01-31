@@ -13,14 +13,35 @@ class Questions
         $db = DB::getConnection();
         $sql = "INSERT INTO questions (id_region, name, email, question, type_file) VALUES (?,?,?,?,?)";
         $result = $db->prepare($sql);
-        $result->execute(array($region,$name,$email,$question,$typeFile));
+        $result->execute(array($region, $name, $email, $question, $typeFile));
         return $db->lastInsertId();
     }
-    public static function addFileById($id, $type){
+
+    public static function addFileById($id, $type)
+    {
         $db = DB::getConnection();
         $sql = "UPDATE questions SET type_file=? WHERE id=?";
         $result = $db->prepare($sql);
-        $result->execute(array($type,$id));
+        $result->execute(array($type, $id));
         return true;
+    }
+
+    public static function getList($region)
+    {
+        $questions = array();
+        $db = DB::getConnection();
+        $sql = "SELECT name, question, dateTime,status FROM questions where id_region=? ORDER BY status ,dateTime DESC";
+        $result = $db->prepare($sql);
+        $result->execute(array($region));
+        $i = 0;
+
+        while ($row = $result->fetch()) {
+            $questions[$i]['name'] = $row['name'];
+            $questions[$i]['question'] = $row['question'];
+            $questions[$i]['dateTime'] = $row['dateTime'];
+            $questions[$i]['status'] = $row['status'];
+            $i++;
+        }
+        return $questions;
     }
 }

@@ -5,6 +5,7 @@
  * Date: 27.01.17
  * Time: 14:10
  */
+setlocale(LC_ALL, 'russian');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -12,7 +13,7 @@
     <meta charset="UTF-8">
     <title><?php echo $title; ?></title>
     <link href="../template/styles/styles.css" rel="stylesheet">
-  
+    
 </head>
 <body>
 <header>

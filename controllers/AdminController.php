@@ -20,8 +20,12 @@ Class AdminController
         $userInfo = Users::getUserInfo($_SESSION['login']);
         $userRegion = Regions::getNameById($userInfo['id_region']);
         
-        if ($access == 1)
+        if ($access == 1) {
+
+
+            $questions = Questions::getList($userInfo['id_region']);
             require_once(ROOT . '/views/admin/indexLevel1.php');
+        }
 
         return true;
 
