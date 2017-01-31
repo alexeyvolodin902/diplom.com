@@ -8,23 +8,15 @@
  */
 Class AdminController
 {
-
-
     public function actionIndex()
     {
         $title = "Панель управления";
         session_start();
         if (!isset($_SESSION['access']))
-            header("Location:/auth");
-        $access = $_SESSION['access'];
-        $userInfo = Users::getUserInfo($_SESSION['login']);
-        $userRegion = Regions::getNameById($userInfo['id_region']);
-        
+            header("Location:auth");
+        $access = $_SESSION['access'];        
         if ($access == 1) {
-
-
-            $questions = Questions::getList($userInfo['id_region']);
-            require_once(ROOT . '/views/admin/indexLevel1.php');
+            header("Location:questionAdmin/1");
         }
 
         return true;
@@ -36,7 +28,7 @@ Class AdminController
         $title = "Форма входа";
         session_start();
         session_destroy();
-        $error = false;
+        $error = false; //используется для вывода сообщения о неверном логине и пароле
         if (isset($_POST['login']) && isset($_POST['password'])) {
             $login = $_POST['login'];
             $password = $_POST['password'];
@@ -45,12 +37,9 @@ Class AdminController
                 session_start();
                 $_SESSION['access'] = $access;
                 $_SESSION['login'] = $login;
-                
-                
                 header("Location:/admin");
             } else $error = true;
         }
-
         require_once(ROOT . '/views/admin/auth.php');
         return true;
 

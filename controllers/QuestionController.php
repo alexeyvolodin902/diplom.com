@@ -10,7 +10,7 @@ class QuestionController
 {
     public function actionIndex()
     {
-        session_start();
+
         $title = "Задать вопрос";
         $regions = Regions::getAll();
         require_once(ROOT . '/views/client/question.php');
@@ -31,11 +31,26 @@ class QuestionController
                 $exp = $info->getExtension();
                 $uploadFile = "media/questionFiles/" . $id . "." . $exp;
                 move_uploaded_file($_FILES['addedFile']['tmp_name'], $uploadFile);
-                Questions::addFileById($id,$exp);
+                Questions::addFileById($id, $exp);
             }
-
-
         }
         return true;
     }
+
+    public function actionAdmin($page = 1)
+    {
+        $title = "Панель управления вопросами";
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+
+        $userInfo = Users::getUserInfo($_SESSION['login']);
+        $userRegion = Regions::getNameById($userInfo['id_region']);
+        /*$questions = Questions::getList($userInfo['id_region']);*/
+        $questions = Questions::getListByPage($page);
+        
+        require_once(ROOT . '/views/admin/indexLevel1.php');
+        return true;
+    }
+
 }
