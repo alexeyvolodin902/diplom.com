@@ -41,7 +41,7 @@ class Router
 				$controllerName = ucfirst($controllerName);
 
 
-				$actionName = 'action'.ucfirst(array_shift($segments));
+				$actionName = 'method'.ucfirst(array_shift($segments));
 				$parameters = $segments;
 
 

@@ -19,7 +19,7 @@ setlocale(LC_ALL, 'russian');
 <header>
 
     <div id="logo">
-        <a href="index">
+        <a href="/">
         <img src="../template/img/logo.svg" alt="НижТехИнвентаризация">
             </a>
         <br>

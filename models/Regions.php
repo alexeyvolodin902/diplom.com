@@ -8,6 +8,7 @@
  */
 class Regions
 {
+    /*Вовзращщает имя региона по id*/
     public static function getNameById($id)
     {
         $db = DB::getConnection();
@@ -16,6 +17,8 @@ class Regions
         $result->execute(array($id));
         return $result->fetchColumn();
     }
+    
+    /*Возвращает массив всех регионов в базе данных*/
     public static function getAll()
     {
         $regions=array();

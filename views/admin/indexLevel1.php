@@ -22,13 +22,19 @@ include_once ROOT . '/views/layouts/header.php';
         <a href="../auth" id="logoutButton" class="redButton">Выйти</a>
 
     </div>
-<?php
-if (count($questions) == 0)
-    echo "<h1>Вопросов в базе нет.</h1>";
-?>
-    <main>
 
+    <main>
+        <?php
+        if (count($questions) == 0) {
+            echo "<h3>Вопросов в базе нет.</h3>";
+        }else{
+            echo"<h3>Панель управления вопросами</h3>";
+            echo "<div>Неотвеченных вопросов: ".$unreadCount."<br>Всего вопросов: ".$countQuestion."</div>";
+        }
+
+        ?>
         <div id="questionList">
+
             <?php foreach ($questions as $question):
                 ?>
                 <a href="#">
@@ -55,14 +61,31 @@ if (count($questions) == 0)
             endforeach;
             ?>
         </div>
-        <?php
-        if ($page != 1) {
-            $prevPage = "<a href= ./1>1</a><a href= ./" . ($page - 1) . ">...</a>";
-            echo $prevPage;
-        } else {
-            $prevPage = "";
-        }
-        ?>
+        <div class="pages">
+            <?php
+            $countPage = intval(($countQuestion - 1) / 5) + 1;
+            $pagination = "";
+            if (($page - 3) > 0) {
+                $pagination .= "<a href= './1'>&#8592</a>";
+            }
+            for ($i = -2; $i < 0; $i++) {
+                if (($page + $i) > 0) {
+                    $pagination .= "<a href= './" . ($page + $i) . "'>" . ($page + $i) . "</a>";
+                }
+            }
+            if ($countPage != 1)
+                $pagination .= "<a href= './" . $page . "' class = 'active'>" . $page . "</a>";
+            for ($i = 1; $i < 3; $i++) {
+                if (($page + $i) <= $countPage) {
+                    $pagination .= "<a href= './" . ($page + $i) . "'>" . ($page + $i) . "</a>";
+                }
+            }
+            if (($page + 3) <= $countPage) {
+                $pagination .= "<a href= './" . ($page + 3) . "'> &#8594</a>";
+            }
+            echo $pagination;
+            ?>
+        </div>
     </main>
 
 <?php

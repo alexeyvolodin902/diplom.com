@@ -8,8 +8,9 @@
  */
 class Questions
 {
-    const COUNT_PAGE = 5;
 
+    /*Клиентская часть*/
+    /*Метод добавления вопроса*/
     public static function addQuestion($region, $name, $email, $question, $typeFile = 0)
     {
         $db = DB::getConnection();
@@ -19,6 +20,7 @@ class Questions
         return $db->lastInsertId();
     }
 
+    /*Метод добавления файла к вопросу*/
     public static function addFileById($id, $type)
     {
         $db = DB::getConnection();
@@ -27,11 +29,10 @@ class Questions
         $result->execute(array($type, $id));
         return true;
     }
-
+    /*Админ часть*/
+    /*Вовращает массив всех вопросов по id региона*/
     public static function getList($region)
     {
-
-
         $questions = array();
         $db = DB::getConnection();
         if ($region == 0) {
@@ -44,9 +45,7 @@ class Questions
             $result = $db->prepare($sql);
             $result->execute(array($region));
         }
-
         $i = 0;
-
         while ($row = $result->fetch()) {
             $questions[$i]['name'] = $row['name'];
             $questions[$i]['question'] = $row['question'];
@@ -54,35 +53,46 @@ class Questions
             $questions[$i]['status'] = $row['status'];
             $i++;
         }
-
         return $questions;
     }
 
-    public static function getListByPage($page = 1)
+    /*Возвращает количество вопросов по id региона*/
+    public static function countByRegion($region)
     {
-        $questions=array();
         $db = DB::getConnection();
-        $countQuestionOnPage = 3; //число вопросов на одной странице
-        //Общее число вопросов
-        $sql = "SELECT COUNT(*) FROM questions";
-        $result = $db->query($sql);
-        $countQuestion = $result->fetchColumn();
-        //Общее число страниц
+        $sql = "SELECT COUNT(*) FROM questions WHERE id_region=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($region));
+        return $result->fetchColumn();
+    }
+
+    /*Возвращает количество непрочитанных сообщений по id региона*/
+    public static function countUnread($region)
+    {
+        $db = DB::getConnection();
+        $sql = "SELECT COUNT(*) FROM questions WHERE id_region=? AND status=0";
+        $result = $db->prepare($sql);
+        $result->execute(array($region));
+        return $result->fetchColumn();
+    }
+    
+    /*Вовращает список вопросов по номеру страницы и id региона*/
+    public static function getListByPage($page = 1, $region = 0)
+    {
+        $questions = array();
+        $db = DB::getConnection();
+        $countQuestionOnPage = 5; //число вопросов на одной странице
+        $countQuestion = self::countByRegion($region);
         $totalPage = intval(($countQuestion - 1) / $countQuestionOnPage) + 1;
-        //стартовая страница; ПОПРОБОВАТЬ ПОТОМ УБРАТЬ
-        
-        // Если значение $page меньше единицы или отрицательно
-        // переходим на первую страницу
-        // А если слишком большое, то переходим на последнюю
         if (empty($page) or $page < 0) $page = 1;
         if ($page > $totalPage) $page = $totalPage;
-        // Вычисляем начиная к какого номера
-        // следует выводить вопросы
         $startQuestion = $page * $countQuestionOnPage - $countQuestionOnPage;
-        $sql = "SELECT name, question, dateTime, status FROM questions LIMIT ?,?";
+        $sql = "SELECT name, question, dateTime, status FROM questions WHERE id_region=? " .
+            "ORDER BY status, dateTime DESC LIMIT ?,? ";
         $result = $db->prepare($sql);
-        $result->bindValue(1, $startQuestion, PDO::PARAM_INT);
-        $result->bindValue(2, $countQuestionOnPage, PDO::PARAM_INT);
+        $result->bindValue(1, $region, PDO::PARAM_STR);
+        $result->bindValue(2, $startQuestion, PDO::PARAM_INT);
+        $result->bindValue(3, $countQuestionOnPage, PDO::PARAM_INT);
         $result->execute();
         $i = 0;
         while ($row = $result->fetch()) {

@@ -11,7 +11,7 @@ a {
   text-decoration: none;
   color: black;
 }
-h1{
+h1,h3{
   text-align: center;
 }
 
@@ -318,6 +318,7 @@ main {
 }
 
 /*Список вопросов панели Level1*/
+
 #questionList {
   .unRead{
     color:red;
@@ -336,11 +337,32 @@ main {
     }
     .questionListText{
       float: right;
+
       margin: 0 30px;
     }
   }
   .questionItem:hover{
     background: white;
     border: 1px solid #aaa;
+  }
+}
+/*Постраничная навигация*/
+.pages{
+  text-align: center;
+  width: 100%;
+
+  a{
+    display: inline-block;
+    padding: 3px;
+    background-color: #6c4a03;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+
+  }
+  .active{
+    background-color:#7bad1a;
   }
 }

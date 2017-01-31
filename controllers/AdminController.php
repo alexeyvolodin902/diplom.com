@@ -8,7 +8,8 @@
  */
 Class AdminController
 {
-    public function actionIndex()
+    
+    public function methodIndex()
     {
         $title = "Панель управления";
         session_start();
@@ -23,7 +24,7 @@ Class AdminController
 
     }
 
-    public function actionAuth()
+    public function methodAuth()
     {
         $title = "Форма входа";
         session_start();

@@ -8,6 +8,7 @@
  */
 class Users
 {
+    /*Проверяет наличие пользователя с заданным логином и паролем в БД*/
     public static function checkUser($login, $password)
     {
         $db = DB::getConnection();
@@ -17,6 +18,7 @@ class Users
         return $result->fetchColumn();
     }
 
+    /*Возвращает информацию о пользователе по логину*/
     public static function getUserInfo($login)
     {
 

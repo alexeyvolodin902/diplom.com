@@ -8,7 +8,7 @@
  */
 class QuestionController
 {
-    public function actionIndex()
+    public function methodIndex()
     {
 
         $title = "Задать вопрос";
@@ -17,7 +17,7 @@ class QuestionController
         return true;
     }
 
-    public function actionAddQuestion()
+    public function methodAddQuestion()
     {
         if (isset($_POST['region']) &&
             isset($_POST['name']) &&
@@ -37,7 +37,7 @@ class QuestionController
         return true;
     }
 
-    public function actionAdmin($page = 1)
+    public function methodAdmin($page = 1)
     {
         $title = "Панель управления вопросами";
         session_start();
@@ -45,10 +45,11 @@ class QuestionController
             header("Location:auth");
 
         $userInfo = Users::getUserInfo($_SESSION['login']);
-        $userRegion = Regions::getNameById($userInfo['id_region']);
-        /*$questions = Questions::getList($userInfo['id_region']);*/
-        $questions = Questions::getListByPage($page);
-        
+        $idRegion = $userInfo['id_region'];
+        $userRegion = Regions::getNameById($idRegion);
+        $questions = Questions::getListByPage($page,$idRegion);
+        $unreadCount = Questions::countUnread($idRegion);
+        $countQuestion = Questions::countByRegion($idRegion);
         require_once(ROOT . '/views/admin/indexLevel1.php');
         return true;
     }

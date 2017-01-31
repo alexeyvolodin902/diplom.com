@@ -8,7 +8,7 @@ class SiteController{
 
 
 
-    public function actionIndex()
+    public function methodIndex()
     {          
         $title = "НижТехИнвентаризация";
         require_once(ROOT . '/views/client/index.php');
