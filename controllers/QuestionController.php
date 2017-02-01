@@ -38,6 +38,7 @@ class QuestionController
         }
         return true;
     }
+
     /*Метод страницы управления вопросами*/
     public function methodAdmin($page = 1)
     {
@@ -53,6 +54,35 @@ class QuestionController
         $unreadCount = Questions::countUnread($idRegion);
         $countQuestion = Questions::countByRegion($idRegion);
         require_once(ROOT . '/views/admin/indexLevel1.php');
+        return true;
+    }
+
+    /*Метод страницы ответа на вопрос*/
+    public function methodAnswer($id)
+    {
+        $title = "Панель ответа на вопрос";
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        $userInfo = Users::getUserInfo($_SESSION['login']);
+        $idRegion = $userInfo['id_region'];
+        $userRegion = Regions::getNameById($idRegion);
+        $question = Questions::getQuestion($id);
+        if ($question['id_region'] != $idRegion)
+            require_once(ROOT . '/views/admin/errorAccess.php');
+        else
+            require_once(ROOT . '/views/admin/questionAnswer.php');
+
+        /*test*/
+
+
+        $to = 'alexeyvolodin902@gmail.com';
+        $subject = 'This is the subject!';
+        $body = 'This is the email body.';
+        $from = 'From: From Address <alexeyvolodin902@gmail.com>' . "\r\n";
+        $option = "-falexeyvolodin902@gmail.com";
+        mail($to, $subject, $body, $from, $option);
+
         return true;
     }
 

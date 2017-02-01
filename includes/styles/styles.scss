@@ -380,3 +380,18 @@ main {
     background-color: #7bad1a;
   }
 }
+/*Страница ошибки доступа*/
+#accessError{
+  text-align: center;
+  background: $backgroundWhite;
+  padding: 30px 0;
+  border-radius: 15px;
+}
+#buttonBack{
+  display: block;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin: 30px 0 0 100px;
+}

@@ -40,7 +40,7 @@ include_once ROOT . '/views/modules/header.php';
 
             <?php foreach ($questions as $question):
                 ?>
-                <a href="#">
+                <a href="../questionAnswer/<?php echo $question['id']?>">
                     <div class="questionItem <?php if ($question["status"] == 0) echo "unRead"; ?>">
                         <div
                             class="questionListTime"><?php echo strftime("%e %B %R", strtotime($question['dateTime'])); ?></div>

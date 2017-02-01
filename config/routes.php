@@ -1,6 +1,7 @@
 <?php
 
 return array(
+    'questionAnswer/([0-9]+)'=>'question/answer/$1',
     'questionAdmin/([0-9]+)'=>'question/admin/$1',
     'addQuestion'=>'question/addQuestion',
     'question'=>'question/index',

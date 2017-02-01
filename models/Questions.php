@@ -40,13 +40,14 @@ class Questions
                 "ORDER BY status, dateTime DESC";
             $result = $db->query($sql);
         } else {
-            $sql = "SELECT name, question, dateTime,status FROM questions where id_region=? " .
+            $sql = "SELECT id name, question, dateTime,status FROM questions where id_region=? " .
                 "ORDER BY status, dateTime DESC";
             $result = $db->prepare($sql);
             $result->execute(array($region));
         }
         $i = 0;
         while ($row = $result->fetch()) {
+            $questions[$i]['id'] = $row['id'];
             $questions[$i]['name'] = $row['name'];
             $questions[$i]['question'] = $row['question'];
             $questions[$i]['dateTime'] = $row['dateTime'];
@@ -75,7 +76,7 @@ class Questions
         $result->execute(array($region));
         return $result->fetchColumn();
     }
-    
+
     /*Вовращает список вопросов по номеру страницы и id региона*/
     public static function getListByPage($page = 1, $region = 0)
     {
@@ -87,22 +88,45 @@ class Questions
         if (empty($page) or $page < 0) $page = 1;
         if ($page > $totalPage) $page = $totalPage;
         $startQuestion = $page * $countQuestionOnPage - $countQuestionOnPage;
-        $sql = "SELECT name, question, dateTime, status FROM questions WHERE id_region=? " .
-            "ORDER BY status, dateTime DESC LIMIT ?,? ";
-        $result = $db->prepare($sql);
-        $result->bindValue(1, $region, PDO::PARAM_STR);
-        $result->bindValue(2, $startQuestion, PDO::PARAM_INT);
-        $result->bindValue(3, $countQuestionOnPage, PDO::PARAM_INT);
-        $result->execute();
+        if ($region == 0) {
+            $sql = "SELECT id, name, question, dateTime, status FROM questions " .
+                "ORDER BY status, dateTime DESC LIMIT ?,? ";
+            $result = $db->prepare($sql);
+            $result->bindValue(1, $startQuestion, PDO::PARAM_INT);
+            $result->bindValue(2, $countQuestionOnPage, PDO::PARAM_INT);
+            $result->execute();
+        } else {
+            $sql = "SELECT id, name, question, dateTime, status FROM questions WHERE id_region=? " .
+                "ORDER BY status, dateTime DESC LIMIT ?,? ";
+            $result = $db->prepare($sql);
+            $result->bindValue(1, $region, PDO::PARAM_STR);
+            $result->bindValue(2, $startQuestion, PDO::PARAM_INT);
+            $result->bindValue(3, $countQuestionOnPage, PDO::PARAM_INT);
+            $result->execute();
+        }
         $i = 0;
         while ($row = $result->fetch()) {
+            $questions[$i]['id'] = $row['id'];
             $questions[$i]['name'] = $row['name'];
             $questions[$i]['question'] = $row['question'];
             $questions[$i]['dateTime'] = $row['dateTime'];
             $questions[$i]['status'] = $row['status'];
             $i++;
         }
+
         return $questions;
 
+    }
+
+    /*Возвращает массив вопроса по id*/
+    public static function getQuestion($id)
+    {
+        $question = array();
+        $db = DB::getConnection();
+        $sql = "SELECT * FROM questions where id=? " .
+            "ORDER BY status, dateTime DESC";
+        $result = $db->prepare($sql);
+        $result->execute(array($id));
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 }
