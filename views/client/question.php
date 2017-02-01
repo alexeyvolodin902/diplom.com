@@ -5,7 +5,7 @@
  * Date: 28.01.17
  * Time: 19:26
  */
-include_once ROOT . '/views/layouts/header.php';
+include_once ROOT . '/views/modules/header.php';
 ?>
     <a href="index" id="goHomeClient" class="grayButton">&#8592 Назад</a>
 
@@ -39,7 +39,7 @@ include_once ROOT . '/views/layouts/header.php';
             </form>
         </div>
         <div id="loader">
-            <img src="../template/img/load.svg" height="100">
+            <img src="../includes/img/load.svg" height="100">
         </div>
         <div id="completeQuestion">
             <h2>Спасибо за ваш вопрос!</h2>
@@ -49,9 +49,9 @@ include_once ROOT . '/views/layouts/header.php';
 
     </main>
 
-    <script type="text/javascript" src="../template/js/jQuery.js"></script>
-    <script type="text/javascript" src="../template/js/validator.min.js"></script>
-    <script type="text/javascript" src="../template/js/script.js"></script>
+    <script type="text/javascript" src="../includes/js/jQuery.js"></script>
+    <script type="text/javascript" src="../includes/js/validator.min.js"></script>
+    <script type="text/javascript" src="../includes/js/script.js"></script>
     <script>
 
 
@@ -157,4 +157,4 @@ include_once ROOT . '/views/layouts/header.php';
 
 
 <?php
-include_once ROOT . '/views/layouts/footer.php';
+include_once ROOT . '/views/modules/footer.php';

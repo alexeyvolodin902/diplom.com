@@ -8,14 +8,14 @@
  */
 Class AdminController
 {
-    
+    /*В зависимости от уровня доступа переадреусует на необходимые страницы*/
     public function methodIndex()
     {
         $title = "Панель управления";
         session_start();
         if (!isset($_SESSION['access']))
             header("Location:auth");
-        $access = $_SESSION['access'];        
+        $access = $_SESSION['access'];
         if ($access == 1) {
             header("Location:questionAdmin/1");
         }
@@ -24,6 +24,7 @@ Class AdminController
 
     }
 
+    /*Метод авторизации пользователей*/
     public function methodAuth()
     {
         $title = "Форма входа";

@@ -7,7 +7,7 @@
  */
 
 
-include_once ROOT.'/views/layouts/header.php';
+include_once ROOT.'/views/modules/header.php';
 ?>
 <a href="/auth" id="signIn" class="grayButton">Вход</a>
 <main>
@@ -42,5 +42,5 @@ include_once ROOT.'/views/layouts/header.php';
     </section>
 </main>
 <?php
-include_once ROOT.'/views/layouts/footer.php';
+include_once ROOT.'/views/modules/footer.php';
 ?>

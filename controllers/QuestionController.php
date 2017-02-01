@@ -8,6 +8,7 @@
  */
 class QuestionController
 {
+    /*Метод страницы вопросов клиентской части*/
     public function methodIndex()
     {
 
@@ -17,6 +18,7 @@ class QuestionController
         return true;
     }
 
+    /*Метод добавления вопроса*/
     public function methodAddQuestion()
     {
         if (isset($_POST['region']) &&
@@ -36,7 +38,7 @@ class QuestionController
         }
         return true;
     }
-
+    /*Метод страницы управления вопросами*/
     public function methodAdmin($page = 1)
     {
         $title = "Панель управления вопросами";
@@ -47,7 +49,7 @@ class QuestionController
         $userInfo = Users::getUserInfo($_SESSION['login']);
         $idRegion = $userInfo['id_region'];
         $userRegion = Regions::getNameById($idRegion);
-        $questions = Questions::getListByPage($page,$idRegion);
+        $questions = Questions::getListByPage($page, $idRegion);
         $unreadCount = Questions::countUnread($idRegion);
         $countQuestion = Questions::countByRegion($idRegion);
         require_once(ROOT . '/views/admin/indexLevel1.php');

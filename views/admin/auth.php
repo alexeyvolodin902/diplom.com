@@ -6,7 +6,7 @@
  * Time: 15:02
  */
 
-include_once ROOT . '/views/layouts/header.php';
+include_once ROOT . '/views/modules/header.php';
 
 ?>
     <a href="/" id="backToSite">Вернуться на главную страницу</a>
@@ -28,4 +28,4 @@ include_once ROOT . '/views/layouts/header.php';
     </main>
 
 <?php
-include_once ROOT . '/views/layouts/footer.php';
+include_once ROOT . '/views/modules/footer.php';
