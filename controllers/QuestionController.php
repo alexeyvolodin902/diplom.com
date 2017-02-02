@@ -76,12 +76,12 @@ class QuestionController
         /*test*/
 
 
-        $to = 'alexeyvolodin902@gmail.com';
-        $subject = 'This is the subject!';
-        $body = 'This is the email body.';
-        $from = 'From: From Address <alexeyvolodin902@gmail.com>' . "\r\n";
-        $option = "-falexeyvolodin902@gmail.com";
-        mail($to, $subject, $body, $from, $option);
+        $to = 'alexeyvoin902@gmail.com';
+        $subject = 'ответ на вопрос!';
+        $body = 'Приветики';
+        $from = 'From: From Address <from.answer@gpnti.ru>' . "\r\n";
+        $option = "-fvolodinyalexei@yandex.ru";
+        //mail($to, "=?utf-8?B?".base64_encode($subject)."?=", $body, $from, $option);
 
         return true;
     }
