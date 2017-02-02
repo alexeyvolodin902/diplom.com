@@ -23,7 +23,7 @@ class Users
     {
 
         $db = DB::getConnection();
-        $sql = "SELECT FIO, id_region, position FROM users WHERE login=?";
+        $sql = "SELECT * FROM users WHERE login=?";
         $result = $db->prepare($sql);
         $result->execute(array($login));
         return $result->fetch(PDO::FETCH_ASSOC);

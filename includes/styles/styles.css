@@ -311,4 +311,21 @@ main {
   line-height: 30px;
   margin: 30px 0 0 100px; }
 
+/*Страница ответа на вопрос*/
+#questionInfo {
+  padding: 10px 20px;
+  margin: 10px auto 0 auto;
+  background-color: #7bad1a;
+  border-radius: 10px 10px 0 0;
+  color: white;
+  width: 80%; }
+  #questionInfo #questionTime {
+    float: right; }
+
+#questionText {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white; }
+
 /*# sourceMappingURL=styles.css.map */

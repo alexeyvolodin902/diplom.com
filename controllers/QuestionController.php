@@ -53,14 +53,14 @@ class QuestionController
         $questions = Questions::getListByPage($page, $idRegion);
         $unreadCount = Questions::countUnread($idRegion);
         $countQuestion = Questions::countByRegion($idRegion);
-        require_once(ROOT . '/views/admin/indexLevel1.php');
+        require_once(ROOT . '/views/admin/questionList.php');
         return true;
     }
 
     /*Метод страницы ответа на вопрос*/
     public function methodAnswer($id)
     {
-        $title = "Панель ответа на вопрос";
+        $title = "Страница ответа на вопрос";
         session_start();
         if (!isset($_SESSION['access']))
             header("Location:auth");
@@ -68,6 +68,7 @@ class QuestionController
         $idRegion = $userInfo['id_region'];
         $userRegion = Regions::getNameById($idRegion);
         $question = Questions::getQuestion($id);
+        
         if ($question['id_region'] != $idRegion)
             require_once(ROOT . '/views/admin/errorAccess.php');
         else
@@ -76,12 +77,12 @@ class QuestionController
         /*test*/
 
 
-        $to = 'alexeyvoin902@gmail.com';
+        /*$to = 'alexeyvoin902@gmail.com';
         $subject = 'ответ на вопрос!';
         $body = 'Приветики';
         $from = 'From: From Address <from.answer@gpnti.ru>' . "\r\n";
         $option = "-fvolodinyalexei@yandex.ru";
-        //mail($to, "=?utf-8?B?".base64_encode($subject)."?=", $body, $from, $option);
+        //mail($to, "=?utf-8?B?".base64_encode($subject)."?=", $body, $from, $option);*/
 
         return true;
     }
