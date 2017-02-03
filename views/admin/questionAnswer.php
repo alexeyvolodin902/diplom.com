@@ -34,38 +34,50 @@ include_once ROOT . '/views/modules/header.php';
         <div id="questionText">
             <p><?php
                 echo $question['question'];
-                echo "</p>";
+                echo "</p><br>";
                 if (!empty($question['type_file'])) {
                     $href = "../media/questionFiles/" . $question['id'] . "." . $question['type_file'];
                     echo "<a href =" . $href . " id=\"addedFile\" target=\"_blank\">Прикрепленный " . $question['type_file'] . " файл" . "</a>";
                 }
+                echo "<span id=\"questionEmail\">". $question['email']."</span><br>";
 
                 ?>
 
         </div>
-        <?php if(empty($question['answer'])): ?>
-        <div id="answerQuestion">
+        <?php if ($question['status'] == 0): ?>
 
-            <textarea id="textarea" placeholder="Введите ответ"></textarea>
-            <div id="deleteButtons">
-                <a href="" class="redButton">Удалить</a>
-                <a href="" class="grayButton">Отметить как прочитанное</a>
-            </div>
-            <div id="answerButton">
+            <div id="answerQuestion">
 
-                <a href="" class="greenButton">Ответить</a>
+                <textarea id="textarea" placeholder="Введите ответ"></textarea>
+                <div class="deleteButtons">
+                    <a href="" class="redButton">Удалить</a>
+                    <a href="" class="grayButton">Отметить как прочитанное</a>
+                </div>
+                <div id="answerButton">
+
+                    <a href="" class="greenButton">Ответить</a>
+                </div>
             </div>
-        </div>
+
+        <?php elseif (!empty($question['answer'])): ?>
+            <div id="answerText">
+               <!-- --><?php /*echo $userAnswer; */?>
+                <p>
+                    <?php
+
+                    echo $question['answer']; ?>
+                </p>
+            </div>
+
         <?php else: ?>
-        <div id="answerText">
-            <?php echo $userAnswer;?>
-            <p>
-                <?php
+            <div id="messageAnswerQuestion">
+                Вопрос был помечен как отвеченный пользователем: <b><?php echo $userAnswer; ?></b>
 
-                echo $question['answer'];?>
-            </p>
-        </div>
-
+            </div>
+            <div class="deleteButtons">
+                <a href="" class="redButton">Удалить</a>
+                <a href="" class="grayButton">Отметить как неотвеченный</a>
+            </div>
         <?php endif; ?>
 
 
@@ -74,7 +86,7 @@ include_once ROOT . '/views/modules/header.php';
     <script type="text/javascript" src="../includes/js/jQuery.js"></script>
     <script>
         var inputAnswer = document.getElementById('textarea');
-        var buttonDelete = $("#deleteButtons");
+        var buttonDelete = $(".deleteButtons");
         var buttonAnswer = $("#answerButton");
         buttonAnswer.hide();
         inputAnswer.oninput = function () {

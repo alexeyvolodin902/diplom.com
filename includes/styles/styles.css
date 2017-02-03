@@ -327,11 +327,14 @@ main {
   padding: 20px;
   background-color: white; }
   #questionText #addedFile {
-    display: block;
-    margin-top: 30px;
+    display: inline-block;
     font-size: 11pt;
     text-decoration: underline;
     color: #0a7317; }
+  #questionText #questionEmail {
+    display: inline-block;
+    float: right;
+    text-decoration: underline; }
 
 #answerQuestion {
   text-align: center; }
@@ -346,17 +349,27 @@ main {
     background-color: #eeeeee; }
   #answerQuestion textarea:focus {
     background-color: white; }
-  #answerQuestion #answerButton, #answerQuestion #deleteButtons {
-    margin-top: 10px; }
-    #answerQuestion #answerButton a, #answerQuestion #deleteButtons a {
-      height: 30px;
-      line-height: 30px;
-      padding: 5px 10px; }
+
+#answerButton, .deleteButtons {
+  margin: 10px;
+  text-align: center; }
+  #answerButton a, .deleteButtons a {
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 10px; }
 
 #answerText {
   margin: 20px auto;
   width: 80%;
   padding: 20px;
   background-color: #eee; }
+
+#messageAnswerQuestion {
+  width: 80%;
+  padding: 20px;
+  background-color: gray;
+  margin: 0 auto;
+  color: white;
+  border-radius: 0 0 10px 10px; }
 
 /*# sourceMappingURL=styles.css.map */
