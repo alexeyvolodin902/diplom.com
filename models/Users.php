@@ -19,7 +19,7 @@ class Users
     }
 
     /*Возвращает информацию о пользователе по логину*/
-    public static function getUserInfo($login)
+    public static function getUserInfoByLogin($login)
     {
 
         $db = DB::getConnection();
@@ -27,6 +27,15 @@ class Users
         $result = $db->prepare($sql);
         $result->execute(array($login));
         return $result->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function getNameById($id)
+    {
+        $db = DB::getConnection();
+        $sql = "SELECT FIO FROM users WHERE id=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($id));
+        return $result->fetchColumn();
     }
 
 

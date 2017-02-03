@@ -37,12 +37,56 @@ include_once ROOT . '/views/modules/header.php';
                 echo "</p>";
                 if (!empty($question['type_file'])) {
                     $href = "../media/questionFiles/" . $question['id'] . "." . $question['type_file'];
-                    echo "<a href =".$href." target=\"_blank\">Прикрепленный ". $question['type_file']." файл"."</a>";
+                    echo "<a href =" . $href . " id=\"addedFile\" target=\"_blank\">Прикрепленный " . $question['type_file'] . " файл" . "</a>";
                 }
 
                 ?>
 
         </div>
+        <?php if(empty($question['answer'])): ?>
+        <div id="answerQuestion">
+
+            <textarea id="textarea" placeholder="Введите ответ"></textarea>
+            <div id="deleteButtons">
+                <a href="" class="redButton">Удалить</a>
+                <a href="" class="grayButton">Отметить как прочитанное</a>
+            </div>
+            <div id="answerButton">
+
+                <a href="" class="greenButton">Ответить</a>
+            </div>
+        </div>
+        <?php else: ?>
+        <div id="answerText">
+            <?php echo $userAnswer;?>
+            <p>
+                <?php
+
+                echo $question['answer'];?>
+            </p>
+        </div>
+
+        <?php endif; ?>
+
+
     </main>
+
+    <script type="text/javascript" src="../includes/js/jQuery.js"></script>
+    <script>
+        var inputAnswer = document.getElementById('textarea');
+        var buttonDelete = $("#deleteButtons");
+        var buttonAnswer = $("#answerButton");
+        buttonAnswer.hide();
+        inputAnswer.oninput = function () {
+            if (inputAnswer.value != "") {
+                buttonDelete.hide();
+                buttonAnswer.show();
+            }
+            else {
+                buttonAnswer.hide();
+                buttonDelete.show();
+            }
+        };
+    </script>
 <?php include_once ROOT . '/views/modules/footer.php';
 ?>

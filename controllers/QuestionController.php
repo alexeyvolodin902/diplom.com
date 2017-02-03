@@ -47,7 +47,7 @@ class QuestionController
         if (!isset($_SESSION['access']))
             header("Location:auth");
 
-        $userInfo = Users::getUserInfo($_SESSION['login']);
+        $userInfo = Users::getUserInfoByLogin($_SESSION['login']);
         $idRegion = $userInfo['id_region'];
         $userRegion = Regions::getNameById($idRegion);
         $questions = Questions::getListByPage($page, $idRegion);
@@ -64,11 +64,14 @@ class QuestionController
         session_start();
         if (!isset($_SESSION['access']))
             header("Location:auth");
-        $userInfo = Users::getUserInfo($_SESSION['login']);
+        $userInfo = Users::getUserInfoByLogin($_SESSION['login']);
         $idRegion = $userInfo['id_region'];
         $userRegion = Regions::getNameById($idRegion);
         $question = Questions::getQuestion($id);
-        
+        if(!empty($question['id_user_answer']))
+        {
+            $userAnswer = Users::getNameById($question['id_user_answer']);
+        }
         if ($question['id_region'] != $idRegion)
             require_once(ROOT . '/views/admin/errorAccess.php');
         else

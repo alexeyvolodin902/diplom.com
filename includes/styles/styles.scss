@@ -140,7 +140,6 @@ main {
   height: 35px;
   line-height: 35px;
   border-radius: 5px;
-  background-color: gray;
   color: white;
 }
 
@@ -188,10 +187,10 @@ main {
   cursor: pointer;
   color: white;
   background-color: #0a7317;
-  background-image: -moz-linear-gradient(top, #0a7317 0%, #34b50d 100%);
-  background-image: -webkit-linear-gradient(top, #0a7317 0%, #34b50d 100%);
-  background-image: -o-linear-gradient(top, #0a7317 0%, #34b50d 100%);
-  background-image: -ms-linear-gradient(top, #0a7317 0%, #34b50d 100%);
+  background-image: -moz-linear-gradient(top, #34b50d 0%, #0a7317 100%);
+  background-image: -webkit-linear-gradient(top, #34b50d 0%, #0a7317 100%);
+  background-image: -o-linear-gradient(top, #34b50d 0%, #0a7317 100%);
+  background-image: -ms-linear-gradient(top, #34b50d 0%, #0a7317 100%);
 }
 
 .redButton {
@@ -232,12 +231,12 @@ main {
   }
   #logoutButton {
     display: block;
-    height: 25px;
+    height: 30px;
     font-size: 12pt;
     width: 90px;
     margin: 10px auto;
     text-align: center;
-    line-height: 25px;
+    line-height: 30px;
   }
   #logoutButton:hover {
     background-color: #f50519;
@@ -380,14 +379,16 @@ main {
     background-color: #7bad1a;
   }
 }
+
 /*Страница ошибки доступа*/
-#accessError{
+#accessError {
   text-align: center;
   background: $backgroundWhite;
   padding: 30px 0;
   border-radius: 15px;
 }
-#buttonBack{
+
+#buttonBack {
   display: block;
   width: 100px;
   height: 30px;
@@ -395,8 +396,9 @@ main {
   line-height: 30px;
   margin: 30px 0 0 100px;
 }
+
 /*Страница ответа на вопрос*/
-#questionInfo{
+#questionInfo {
   padding: 10px 20px;
   margin: 10px auto 0 auto;
   background-color: #7bad1a;
@@ -404,14 +406,56 @@ main {
   color: white;
   width: 80%;
 
-  #questionTime{
-    float:right;
+  #questionTime {
+    float: right;
   }
 
 }
-#questionText{
+
+#questionText {
   width: 80%;
   margin: 0 auto;
   padding: 20px;
   background-color: white;
+  #addedFile {
+    display: block;
+    margin-top: 30px;
+    font-size: 11pt;
+    text-decoration: underline;
+    color: #0a7317;
+  }
+}
+
+#answerQuestion {
+  text-align: center;
+  textarea {
+    margin-top: 20px;
+    width: 80%;
+    padding: 20px;
+    font-size: 12pt;
+    height: 100px;
+    outline: none;
+    border: 1px solid #ddd;
+    background-color: #eeeeee;
+
+  }
+  textarea:focus {
+    background-color: white;
+  }
+  #answerButton, #deleteButtons {
+    margin-top: 10px;
+    a {
+      height: 30px;
+      line-height: 30px;
+      padding: 5px 10px;
+    }
+
+  }
+
+}
+#answerText{
+  margin: 20px auto;
+  width: 80%;
+  padding: 20px;
+  background-color: #eee;
 }

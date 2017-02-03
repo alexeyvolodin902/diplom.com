@@ -9,7 +9,7 @@
 include_once ROOT . '/views/modules/header.php';
 
 ?>
-    <a href="/" id="backToSite">Вернуться на главную страницу</a>
+    <a href="/" id="backToSite" class="grayButton">Вернуться на главную страницу</a>
     <main>
 
         <div id="authForm">

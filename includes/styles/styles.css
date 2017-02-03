@@ -105,7 +105,6 @@ main {
   height: 35px;
   line-height: 35px;
   border-radius: 5px;
-  background-color: gray;
   color: white; }
 
 #backToSite:hover {
@@ -145,10 +144,10 @@ main {
   cursor: pointer;
   color: white;
   background-color: #0a7317;
-  background-image: -moz-linear-gradient(top, #0a7317 0%, #34b50d 100%);
-  background-image: -webkit-linear-gradient(top, #0a7317 0%, #34b50d 100%);
-  background-image: -o-linear-gradient(top, #0a7317 0%, #34b50d 100%);
-  background-image: -ms-linear-gradient(top, #0a7317 0%, #34b50d 100%); }
+  background-image: -moz-linear-gradient(top, #34b50d 0%, #0a7317 100%);
+  background-image: -webkit-linear-gradient(top, #34b50d 0%, #0a7317 100%);
+  background-image: -o-linear-gradient(top, #34b50d 0%, #0a7317 100%);
+  background-image: -ms-linear-gradient(top, #34b50d 0%, #0a7317 100%); }
 
 .redButton {
   border: 1px solid #aaa;
@@ -185,12 +184,12 @@ main {
     color: darkgray; }
   #userInfo #logoutButton {
     display: block;
-    height: 25px;
+    height: 30px;
     font-size: 12pt;
     width: 90px;
     margin: 10px auto;
     text-align: center;
-    line-height: 25px; }
+    line-height: 30px; }
   #userInfo #logoutButton:hover {
     background-color: #f50519; }
 
@@ -327,5 +326,37 @@ main {
   margin: 0 auto;
   padding: 20px;
   background-color: white; }
+  #questionText #addedFile {
+    display: block;
+    margin-top: 30px;
+    font-size: 11pt;
+    text-decoration: underline;
+    color: #0a7317; }
+
+#answerQuestion {
+  text-align: center; }
+  #answerQuestion textarea {
+    margin-top: 20px;
+    width: 80%;
+    padding: 20px;
+    font-size: 12pt;
+    height: 100px;
+    outline: none;
+    border: 1px solid #ddd;
+    background-color: #eeeeee; }
+  #answerQuestion textarea:focus {
+    background-color: white; }
+  #answerQuestion #answerButton, #answerQuestion #deleteButtons {
+    margin-top: 10px; }
+    #answerQuestion #answerButton a, #answerQuestion #deleteButtons a {
+      height: 30px;
+      line-height: 30px;
+      padding: 5px 10px; }
+
+#answerText {
+  margin: 20px auto;
+  width: 80%;
+  padding: 20px;
+  background-color: #eee; }
 
 /*# sourceMappingURL=styles.css.map */
