@@ -35,12 +35,12 @@ class Questions
     {
         $questions = array();
         $db = DB::getConnection();
-        if ($region == 0) {
-            $sql = "SELECT name, question, dateTime,status FROM questions " .
+        if ($region == 51) {
+            $sql = "SELECT * FROM questions " .
                 "ORDER BY status, dateTime DESC";
             $result = $db->query($sql);
         } else {
-            $sql = "SELECT id name, question, dateTime,status FROM questions where id_region=? " .
+            $sql = "SELECT * FROM questions where id_region=? " .
                 "ORDER BY status, dateTime DESC";
             $result = $db->prepare($sql);
             $result->execute(array($region));
@@ -52,6 +52,7 @@ class Questions
             $questions[$i]['question'] = $row['question'];
             $questions[$i]['dateTime'] = $row['dateTime'];
             $questions[$i]['status'] = $row['status'];
+            $questions[$i]['type_file'] = $row['type_file'];
             $i++;
         }
         return $questions;
@@ -88,7 +89,7 @@ class Questions
         if (empty($page) or $page < 0) $page = 1;
         if ($page > $totalPage) $page = $totalPage;
         $startQuestion = $page * $countQuestionOnPage - $countQuestionOnPage;
-        if ($region == 0) {
+        if ($region == 51) {
             $sql = "SELECT id, name, question, dateTime, status FROM questions " .
                 "ORDER BY status, dateTime DESC LIMIT ?,? ";
             $result = $db->prepare($sql);
@@ -123,10 +124,49 @@ class Questions
     {
         $question = array();
         $db = DB::getConnection();
-        $sql = "SELECT * FROM questions where id=? " .
-            "ORDER BY status, dateTime DESC";
+        $sql = "SELECT * FROM questions where id=?";
         $result = $db->prepare($sql);
         $result->execute(array($id));
         return $result->fetch(PDO::FETCH_ASSOC);
+    }
+
+    /*Метод ответа на вопрос*/
+    public static function answer($id, $answer, $idUser)
+    {
+        $db = DB::getConnection();
+        $sql = "UPDATE questions SET answer=?, id_user_answer=?, status=1 WHERE id=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($answer, $idUser, $id));
+        return true;
+    }
+
+    /*Метод отметки о прочтении вопроса*/
+    public static function markAnswered($id, $idUser)
+    {
+        $db = DB::getConnection();
+        $sql = "UPDATE questions SET id_user_answer=?, status=1 WHERE id=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($idUser, $id));
+        return true;
+    }
+
+    /*Метод отметки о непрочтении*/
+    public static function markUnAnswered($id, $idUser)
+    {
+        $db = DB::getConnection();
+        $sql = "UPDATE questions SET id_user_answer=?, status=0 WHERE id=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($idUser, $id));
+        return true;
+    }
+
+    /*Метод удаления вопроса*/
+    public static function delete($id)
+    {
+        $db = DB::getConnection();
+        $sql = "DELETE FROM questions WHERE id=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($id));
+        return true;
     }
 }

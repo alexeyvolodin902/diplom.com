@@ -23,7 +23,7 @@ class Regions
     {
         $regions=array();
         $db= DB::getConnection();
-        $sql = "SELECT * FROM regions";
+        $sql = "SELECT * FROM regions where private=0";
         $result = $db->query($sql);
         $i = 0;
         while ($row = $result->fetch()) {

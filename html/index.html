@@ -1,51 +1,117 @@
 <!DOCTYPE html>
-<html lang="кг">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>НижТехИнвентаризация</title>
-    <link href="styles.css" rel="stylesheet">
+    <title>Страница ответа на вопрос</title>
+    <link href="../includes/styles/styles.css" rel="stylesheet">
+
 </head>
 <body>
-<a href="#" id="signIn">Вход</a>
 <header>
+
     <div id="logo">
-        <img src="../includes/img/logo.svg" alt="НижТехИнвентаризация">
+        <a href="/">
+            <img src="../includes/img/logo.svg" alt="НижТехИнвентаризация">
+        </a>
         <br>
         <span id="logoName">НижТехИнвентаризация</span>
         <br>
         <span id="logoDesc">ГОСУДАРСТВЕННОЕ ПРЕДПРИЯТИЕ НИЖЕГОРОДСКОЙ ОБЛАСТИ</span>
     </div>
+
 </header>
+<div id="userInfo">
+        <span id="userName">
+        Иванова Валерия Константиновна        </span>
+    <br>
+    <div id="userExtra">
+        Консультант <br>
+
+        Лысковский район
+    </div>
+    <a href="../auth" id="logoutButton" class="redButton">Выйти</a>
+
+</div>
+<a href="http://diplom.com/questionAdmin/1" id="buttonBack" class="grayButton">&#8592 Назад</a>
 <main>
-    <menu>
-        <a href="#" class="menuItem firstRow">
-            <div>Справка о площади</div>
-        </a>
-        <a href="#" class="menuItem firstRow">
-            <div>Справка об инвентаризационной стоимости</div>
-        </a>
-        <a href="#" class="menuItem firstRow">
-            <div>Справка о регистрации собственности</div>
-        </a>
-        <a href="#" class="menuItem secondRow">
-           <div>Узнать статус заявки</div>
-        </a>
-        <a href="#" class="menuItem secondRow">
-            <div>Задать вопрос</div>
-        </a>
-        <a href="#" class="menuItem secondRow">
-            <div>Контакты</div>
-        </a>
-    </menu>
-    <section>
-        <h1>С помощью данного сервиса вы сможете:</h1>
-        <ul>
-            <li>Оставить заявку на получение справки о характеристиках объекта недвижимости без очередей и ожидания </li>
-            <li>Оставить заявку на получение справки о наличии собственности у физического лица </li>
-            <li>Узнать статус своей заявки на получение справки</li>
-            <li>Задать любой интересующий вас вопрос нашим специалистам</li>
-        </ul>
-    </section>
+    <div id="questionInfo">
+        <span id="questionAuthor">Автор: <b>Дмитрий Васюков</b></span>
+            <span id="questionTime">Дата и время: <b>
+                     31 января 2017 02:03</b></span>
+    </div>
+    <div id="questionText">
+        <p>Какой срок установлен для выполнения кадастровых работ? А именно, в течение какого срока можно получить
+            межевой план на земельный участок, и есть ли возможность быстро поставить его на кадастровый учет и получить
+            кадастровый паспорт?</p><br><span id="questionEmail">diman@mail.ru</span><br>
+    </div>
+    <!--Помеченный как отвеченный вопрос-->
+    <div id="messageAnswerQuestion">
+        Вопрос был помечен как отвеченный пользователем: <b>Иванова Валерия Константиновна</b>
+    </div>
+    <div class="extraButtons">
+        <a id="deleteQuestionButton" class="redButton">Удалить</a>
+        <a id="a" class="grayButton markUnAnsweredButton">Отметить как неотвеченный</a>
+    </div>
 </main>
+
+<script type="text/javascript" src="../includes/js/jQuery.js"></script>
+<script>
+    var inputAnswer = document.getElementById('textarea');
+    var buttonExtra = $(".extraButtons");
+    var buttonAnswer = $("#answerButton");
+    var answerMessageButton = $("#answerMessageButton");
+    var markAnsweredButton = $("#markAnsweredButton");
+    var markUnAnsweredButton = $("#a");
+    buttonAnswer.hide();
+
+    inputAnswer.oninput = function () {
+        if (inputAnswer.value != "") {
+            buttonExtra.hide();
+            buttonAnswer.show();
+        }
+        else {
+            buttonAnswer.hide();
+            buttonExtra.show();
+        }
+    };
+
+    /*Отправка ответа на вопрос*/
+    answerMessageButton.click(function () {
+        $.post(
+                "../../questionAddAnswer",
+                {
+                    id: 1,
+                    answer: inputAnswer.value,
+                    idUser: 3,
+                    email: "diman@mail.ru"
+                },
+                function () {
+                    $("#answerQuestion").html("<div id=\"successAnswer\">Ответ отправлен</div>");
+                }
+        );
+    });
+
+    /*Отметка об ответе на вопрос*/
+    markAnsweredButton.click(function () {
+        $.post(
+                "../../questionMarkAnswered",
+                {
+                    id: 1,
+                    idUser: 3
+                },
+                function () {
+                    $("#answerQuestion").html("<div id=\"successAnswer\">Вопрос помечен как отвеченный</div>");
+                }
+        );
+    });
+
+    /*Отметка о неотвеченном вопросе*/
+    $('a').click(function () {
+        alert("dfvdfv");
+    });
+
+</script>
 </body>
 </html>
+
+

@@ -42,17 +42,39 @@ class QuestionController
     /*Метод страницы управления вопросами*/
     public function methodAdmin($page = 1)
     {
+
+
         $title = "Панель управления вопросами";
         session_start();
         if (!isset($_SESSION['access']))
             header("Location:auth");
 
+
         $userInfo = Users::getUserInfoByLogin($_SESSION['login']);
         $idRegion = $userInfo['id_region'];
+
+        //удаление старых вопросов
+        $allQuestions = Questions::getList($idRegion);
+        $currentDate = new DateTime();
+        foreach ($allQuestions as $oneQuestion) {
+            $questionDateTime = new DateTime($oneQuestion['dateTime']);
+            $interval = $currentDate->diff($questionDateTime);
+            if ($interval->format("%a") > 365) {
+                Questions::delete($oneQuestion['id']);
+                if (!empty($oneQuestion['type_file'])) {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . "/media/questionFiles/" . $oneQuestion['id'] . "." . $oneQuestion['type_file']);
+                }
+
+            }
+        }
+        //Конец удаления старых вопросов
+
         $userRegion = Regions::getNameById($idRegion);
         $questions = Questions::getListByPage($page, $idRegion);
         $unreadCount = Questions::countUnread($idRegion);
         $countQuestion = Questions::countByRegion($idRegion);
+
+
         require_once(ROOT . '/views/admin/questionList.php');
         return true;
     }
@@ -68,8 +90,7 @@ class QuestionController
         $idRegion = $userInfo['id_region'];
         $userRegion = Regions::getNameById($idRegion);
         $question = Questions::getQuestion($id);
-        if(!empty($question['id_user_answer']))
-        {
+        if (!empty($question['id_user_answer'])) {
             $userAnswer = Users::getNameById($question['id_user_answer']);
         }
         if ($question['id_region'] != $idRegion)
@@ -77,17 +98,81 @@ class QuestionController
         else
             require_once(ROOT . '/views/admin/questionAnswer.php');
 
-        /*test*/
-
-
-        /*$to = 'alexeyvoin902@gmail.com';
-        $subject = 'ответ на вопрос!';
-        $body = 'Приветики';
-        $from = 'From: From Address <from.answer@gpnti.ru>' . "\r\n";
-        $option = "-fvolodinyalexei@yandex.ru";
-        //mail($to, "=?utf-8?B?".base64_encode($subject)."?=", $body, $from, $option);*/
 
         return true;
     }
+
+    /*Метод отправления ответа на вопрос*/
+    public function methodAddAnswer()
+    {
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        if (isset($_POST['id'])
+            && isset($_POST['answer'])
+            && isset($_POST['idUser'])
+            && isset($_POST['email'])
+        ) {
+
+            Questions::answer($_POST['id'], $_POST['answer'], $_POST['idUser']);
+
+            /*отправка email*/
+
+            $to = $_POST['email'];
+            $subject = 'НижТехИнвентаризация. Ответ на вопрос.';
+            $body = $_POST['answer'];
+            $from = 'From: From Address <from.admin@gpnti.ru>' . "\r\n";
+            $option = "-fvolodinyalexei@yandex.ru";
+            mail($to, "=?utf-8?B?" . base64_encode($subject) . "?=", $body, $from, $option);
+        }
+        return true;
+    }
+
+    /*Метод пометки вопроса отвеченным*/
+    public function methodMarkAnswered()
+    {
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        if (isset($_POST['id'])
+            && isset($_POST['idUser'])
+        ) {
+            Questions::markAnswered($_POST['id'], $_POST['idUser']);
+        }
+        return true;
+    }
+
+    /*Метод пометки вопроса неотвеченным*/
+    public function methodMarkUnAnswered()
+    {
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        if (isset($_POST['id'])
+            && isset($_POST['idUser'])
+        ) {
+            Questions::markUnAnswered($_POST['id'], $_POST['idUser']);
+        }
+        return true;
+    }
+
+    /*Метод удаления вопроса*/
+    public function methodDelete()
+    {
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        if (isset($_POST['id'])) {
+            $question = Questions::getQuestion($_POST['id']);
+            Questions::delete($_POST['id']);
+            if (!empty($question['type_file'])) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . "/media/questionFiles/" . $question['id'] . "." . $question['type_file']);
+            }
+
+
+        }
+        return true;
+    }
+
 
 }

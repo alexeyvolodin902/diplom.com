@@ -29,6 +29,7 @@ class Users
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
+    /*Возвращает ФИО пользователя по id*/
     public static function getNameById($id)
     {
         $db = DB::getConnection();
