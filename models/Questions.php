@@ -83,7 +83,7 @@ class Questions
     {
         $questions = array();
         $db = DB::getConnection();
-        $countQuestionOnPage = 5; //число вопросов на одной странице
+        $countQuestionOnPage = 10; //число вопросов на одной странице
         $countQuestion = self::countByRegion($region);
         $totalPage = intval(($countQuestion - 1) / $countQuestionOnPage) + 1;
         if (empty($page) or $page < 0) $page = 1;

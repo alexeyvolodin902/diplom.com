@@ -9,7 +9,7 @@
 <!--Необходимо общее количество вопросов в базе, номер страницы-->
 <div class="pages">
     <?php
-    $countPage = intval(($countQuestion - 1) / 5) + 1;
+    $countPage = intval(($countQuestion - 1) / 10) + 1;
     $pagination = "";
     if (($page - 3) > 0) {
         $pagination .= "<a href= './1'>&#8592</a>";
