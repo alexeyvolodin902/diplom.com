@@ -7,21 +7,12 @@
  */
 
 include_once ROOT . '/views/modules/header.php';
-?>
-    <div id="userInfo">
-        <span id="userName">
-        <?php echo $userInfo['FIO'] ?>
-        </span>
-        <br>
-        <div id="userExtra">
-            <?php echo $userInfo['position'] ?>
-            <br>
+include_once ROOT . '/views/modules/userInfo.php';
 
-            <?php echo $userRegion ?>
-        </div>
-        <a href="../auth" id="logoutButton" class="redButton">Выйти</a>
+if ($_SESSION['access'] > 1):?>
+    <a href="/admin2" id="buttonBack" class="grayButton">&#8592 Назад</a>
+<?php endif; ?>
 
-    </div>
 
     <main>
 
@@ -40,7 +31,7 @@ include_once ROOT . '/views/modules/header.php';
 
             <?php foreach ($questions as $question):
                 ?>
-                <a href="../questionAnswer/<?php echo $question['id']?>">
+                <a href="../questionAnswer/<?php echo $question['id'] ?>">
                     <div class="questionItem <?php if ($question["status"] == 0) echo "unRead"; ?>">
                         <div
                             class="questionListTime"><?php echo strftime("%e %B %R", strtotime($question['dateTime'])); ?></div>

@@ -11,13 +11,15 @@ Class AdminController
     /*В зависимости от уровня доступа переадреусует на необходимые страницы*/
     public function methodIndex()
     {
-        $title = "Панель управления";
         session_start();
         if (!isset($_SESSION['access']))
             header("Location:auth");
         $access = $_SESSION['access'];
         if ($access == 1) {
             header("Location:questionAdmin/1");
+        }
+        if ($access == 2) {
+            header("Location:admin2");
         }
 
         return true;
@@ -45,6 +47,24 @@ Class AdminController
         require_once(ROOT . '/views/admin/auth.php');
         return true;
 
+    }
+
+    /*Метод меню для пользователя с уровнем 2*/
+    public function methodLevel2()
+    {
+        session_start();
+        $title = "Панель управления";
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        
+        $userInfo = Users::getUserInfoByLogin($_SESSION['login']);
+        $idRegion = $userInfo['id_region'];
+        $userRegion = Regions::getNameById($idRegion);
+        if ($_SESSION['access'] < 2)
+            require_once(ROOT . '/views/admin/errorAccess.php');
+        else
+            require_once(ROOT . '/views/admin/level2.php');
+        return true;
     }
 
 

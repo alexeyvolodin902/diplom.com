@@ -1,6 +1,10 @@
 <?php
 
 return array(
+    'passportsAddMenu'=>'passport/addMenu',
+    'passports'=>'passport/index',
+    'admin2'=>'admin/level2',
+    'errorAccess'=>'error/access',
     'questionDelete'=>'question/delete',
     'questionMarkUnAnswered'=>'question/markUnAnswered',
     'questionMarkAnswered'=>'question/markAnswered',

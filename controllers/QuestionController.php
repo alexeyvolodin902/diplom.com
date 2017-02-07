@@ -94,9 +94,9 @@ class QuestionController
             $userAnswer = Users::getNameById($question['id_user_answer']);
         }
         if ($question['id_region'] != $idRegion)
-            require_once(ROOT . '/views/admin/errorAccess.php');
-        else
-            require_once(ROOT . '/views/admin/questionAnswer.php');
+            header("Location:errorAccess");
+
+        require_once(ROOT . '/views/admin/questionAnswer.php');
 
 
         return true;

@@ -6,22 +6,10 @@
  * Time: 12:52
  */
 include_once ROOT . '/views/modules/header.php';
+include_once ROOT . '/views/modules/userInfo.php';
 ?>
-    <div id="userInfo">
-        <span id="userName">
-        <?php echo $userInfo['FIO'] ?>
-        </span>
-        <br>
-        <div id="userExtra">
-            <?php echo $userInfo['position'] ?>
-            <br>
-
-            <?php echo $userRegion ?>
-        </div>
-        <a href="../auth" id="logoutButton" class="redButton">Выйти</a>
-
-    </div>
-    <a href="<?php echo $_SERVER['HTTP_REFERER'] ?>" id="buttonBack" class="grayButton">&#8592 Назад</a>
+    <a href="admin" id="buttonBack" class="grayButton">&#8592 Назад</a>
+    
     <main>
 
         <div id="accessError">
