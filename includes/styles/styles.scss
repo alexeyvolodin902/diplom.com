@@ -17,7 +17,8 @@ h1, h3 {
   color: #6c4a03;
 
 }
-h3{
+
+h3 {
   font-size: 20pt;
 }
 
@@ -91,7 +92,7 @@ main {
       }
     }
 
-    .menuItem:nth-child(2):not(.menuAdmin2) > div{
+    .menuItem:nth-child(2):not(.menuAdmin2) > div {
       margin-top: 48px;
     }
     .menuItem:nth-child(3):not(.menuAdmin2) > div {
@@ -208,9 +209,11 @@ main {
   background-image: -o-linear-gradient(top, #f50519 0%, #750b21 100%);
   background-image: -ms-linear-gradient(top, #f50519 0%, #750b21 100%);
 }
-.redButton:hover,.greenButton:hover,.grayButton:hover{
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+.redButton:hover, .greenButton:hover, .grayButton:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 .grayButton {
   border: 1px solid #9e9e9e;
   border-radius: 5px;
@@ -493,7 +496,49 @@ main {
 
 }
 
-/*Страница админа с уровнем доступа 2*/
-.menuAdmin2{
+/*Меню добавления новго паспорта*/
+#addMenuList {
+  text-align: center;
 
+  a {
+    display: block;
+    padding: 10px 0;
+    background-color: #7bad1a;
+    margin: 5px auto;
+    font-size: 15pt;
+    color: white;
+    width: 50%;
+    border-radius: 8px;
+
+  }
+  .gray {
+    background-color: #9e9e9e;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+/*Форма общих сведений*/
+
+#formGeneral {
+  width: 70%;
+  padding: 30px 0;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $backgroundWhite;
+  border-radius: 25px;
+  input {
+    height: 30px;
+    width: 500px;
+    font-size: 15pt;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+  }
+  select {
+    height: 30px;
+    font-size: 12pt;
+    background-color: white;
+    width: 500px;
+  }
 }
