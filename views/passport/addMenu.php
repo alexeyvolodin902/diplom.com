@@ -14,7 +14,7 @@ include_once ROOT . '/views/modules/userInfo.php';
 
 <main>
     <div id="addMenuList">
-        <a href="passportsFormGeneral">Общие сведения</a>
+        <a href="passportFormGeneral">Общие сведения</a>
         <a href="#">Состав объекта</a>
         <a href="#">Сведения о правообладателях объекта</a>
         <a href="#">Ситуационный план</a>

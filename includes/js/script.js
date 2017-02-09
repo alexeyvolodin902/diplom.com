@@ -18,3 +18,9 @@ function addRedBorder(obj) {
 function addGrayBorder(obj) {
     obj.css("border", "1px solid #ccc");
 }
+function reserErrorInput(obj) {
+    obj.focusin(function () {
+        addGrayBorder($(this));
+        $(this).next().html("<br>");
+    });
+}
