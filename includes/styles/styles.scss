@@ -288,19 +288,21 @@ main {
   input {
     width: 500px;
     height: 30px;
+    border: 1px solid #aaa;
 
   }
   textarea {
     width: 500px;
     height: 100px;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
 
   }
   #addedFile {
     margin-top: 10px;
     font-size: 10pt;
     padding-left: 25%;
+    border:none;
   }
   button {
     height: 40px;
@@ -553,4 +555,19 @@ main {
 .separator{
   color: gray;
   font-size: 15pt;
+}
+#successGeneralForm{
+  display: none;
+  text-align: center;
+  background: $backgroundWhite;
+  width: 40%;
+  padding: 20px 20px 10px 20px;
+  margin: 30px auto;
+  border-radius: 15px;
+  a{
+    display: block;
+    margin: 10px auto;
+    height: 30px;
+    line-height: 30px;
+  }
 }

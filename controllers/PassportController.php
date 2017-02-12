@@ -58,4 +58,9 @@ class PassportController
         require_once(ROOT . '/views/passport/formGeneral.php');
         return true;
     }
+    public function methodNew()
+    {
+        print_r($_POST);
+        return true;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 return array(
+    'passportsNew'=>'passport/new',
     'passportFormGeneral'=>'passport/formGeneral',
     'passportsAddMenu'=>'passport/addMenu',
     'passports'=>'passport/index',

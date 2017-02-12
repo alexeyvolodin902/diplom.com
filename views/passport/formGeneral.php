@@ -25,20 +25,16 @@ include_once ROOT . '/views/modules/userInfo.php';
         <label for="name">Наименование</label><br><input type="text" id="name" name="name">
         <div class="errorForm"><br></div>
         <span class="separator">Адрес</span><br>
-        <label for="area">Область</label><br><input value="Нижегородская" type="text" name="area" id="area">
-        <div class="errorForm"><br></div>
-        <label for="region">Район</label><br><input type="text" name="region" id="region"
-                                                    value="<?php echo $userRegion ?>">
-        <div class="errorForm"><br></div>
         <label for="city">Населенный пункт</label><br><input type="text" name="city" id="city">
         <div class="errorForm"><br></div>
         <label for="street">Улица</label><br><input type="text" name="town" id="town">
         <div class="errorForm"><br></div>
-        <label for="num_town">Дом №</label><br><input type="text" name="num_town" id="num_town">
+        <label for="num_home">Дом №</label><br><input type="text" name="num_town" id="num_town">
         <div class="errorForm"><br></div>
-        <span class="separator">Дополнительно</span><br>
+
         <label for="letter">Литера</label><br><input type="text" name="letter" id="letter" class="optional">
         <div class="errorForm"><br></div>
+        <span class="separator">Информация об инвентаризации</span><br>
         <label for="inv_num">Инвентарный номер</label><br>
         <input type="text" name="inv_num" id="inv_num" class="optional">
         <div class="errorForm"><br></div>
@@ -46,12 +42,16 @@ include_once ROOT . '/views/modules/userInfo.php';
         <input type="text" name="kad_num" id="kad_num" class="optional">
         <div class="errorForm"><br></div>
         <label for="inv_date">Дата технической инвентаризации (ДД.ММ.ГГГГ)</label><br>
-        <input type="text" name="inv_date" id="inv_date" class="optional">
+        <input type="text" name="inv_date" id="inv_date">
         <div class="errorForm"><br></div>
         <button class="greenButton">Отправить</button>
 
 
     </form>
+    <div id="successGeneralForm">
+        <b>Создан технический паспорт id 23</b>
+        <a class="greenButton">Продолжить ввод информации</a>
+    </div>
 </main>
 <script type="text/javascript" src="../includes/js/jQuery.js"></script>
 <script type="text/javascript" src="../includes/js/script.js"></script>
@@ -64,6 +64,7 @@ include_once ROOT . '/views/modules/userInfo.php';
     reserErrorInput(input);
 
     function send() {
+
         var error = false;
 
         if (select.val() == null) {
@@ -71,7 +72,8 @@ include_once ROOT . '/views/modules/userInfo.php';
             select.next().html("Пожалуйста, выберите тип объекта");
             error = true;
         }
-        input.each(function () {
+        var reverseInput = $(input.get().reverse());
+        reverseInput.each(function () {
                 if (!checkEmpty($(this))) {
                     addRedBorder($(this));
                     addErrorEmpty($(this).next());
@@ -79,7 +81,28 @@ include_once ROOT . '/views/modules/userInfo.php';
                 }
             }
         );
-        
+
+
+        if (error) {
+            alert("Пожалуйста, заполните указанные поля");
+            /* window.location.href = "../passportsAddMenu";*/
+        }
+        else {
+            var form = $('#formGeneral');
+            var msg = form.serialize();
+            msg += "&region=" + "<?php echo $idRegion?>";
+            $.ajax({
+                type: 'POST',
+                url: '../passportsNew',
+                data: msg,
+                success: function (data) {
+                    alert(data);
+                }
+            });
+            /* $("#formGeneral").hide();
+             $("#successGeneralForm").show();*/
+        }
+
     }
 </script>
 <?php

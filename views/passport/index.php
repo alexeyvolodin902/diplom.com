@@ -18,7 +18,7 @@ include_once ROOT . '/views/modules/userInfo.php';
             <a href="#" class="menuItem firstRow menuAdmin2">
                 <div>Просмотр</div>
             </a>
-            <a href="passportsAddMenu" class="menuItem firstRow menuAdmin2">
+            <a href="passportFormGeneral" class="menuItem firstRow menuAdmin2">
                 <div>Добавить</div>
             </a>
             <a href="" class="menuItem firstRow menuAdmin2">
