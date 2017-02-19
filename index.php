@@ -13,7 +13,7 @@ define('ROOT', dirname(__FILE__));
 require_once(ROOT . '/components/Autoload.php');
 require_once(ROOT . '/components/Router.php');
 //require_once(ROOT . '/components/Db.php');
-
+//date("Y-m-d",strtotime("3.3.2017"));
 
 
 

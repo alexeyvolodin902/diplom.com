@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&subset=cyrillic-ext');
 
-$backgroundWhite: rgba(250, 250, 250, 0.7);
+$backgroundWhite: rgba(250, 250, 250, 0.8);
 /*Общие стили*/
 * {
   margin: 0;
@@ -498,28 +498,6 @@ main {
 
 }
 
-/*Меню добавления новго паспорта*/
-#addMenuList {
-  text-align: center;
-
-  a {
-    display: block;
-    padding: 10px 0;
-    background-color: #7bad1a;
-    margin: 5px auto;
-    font-size: 15pt;
-    color: white;
-    width: 50%;
-    border-radius: 8px;
-
-  }
-  .gray {
-    background-color: #9e9e9e;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-}
 
 /*Форма общих сведений*/
 
@@ -570,4 +548,46 @@ main {
     height: 30px;
     line-height: 30px;
   }
+  #editSuccess{
+    color:#7bad1a;
+    font-weight: bold;
+  }
 }
+
+
+/*Меню редактирования паспорта*/
+#passportInfo{
+  width: 80%;
+  background: $backgroundWhite;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-weight:bold ;
+
+  span:nth-child(2n){
+    float:right;
+  }
+}
+#editMenuList {
+  text-align: center;
+margin-bottom:30px ;
+  a {
+    display: block;
+    padding: 10px 0;
+    background-color: #7bad1a;
+    margin: 5px auto;
+    font-size: 15pt;
+    color: white;
+    width: 50%;
+    border-radius: 8px;
+
+  }
+  .gray {
+    background-color: #9e9e9e;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+

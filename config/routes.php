@@ -1,9 +1,11 @@
 <?php
 
 return array(
+    'passportsEditGeneralSave/([0-9]+)'=>'passport/editGeneralSave/$1',
+    'passportEditGeneral/([0-9]+)'=>'passport/editGeneral/$1',
     'passportsNew'=>'passport/new',
     'passportFormGeneral'=>'passport/formGeneral',
-    'passportsAddMenu'=>'passport/addMenu',
+    'editPassportMenu/([0-9]+)'=>'passport/editPassportMenu/$1',
     'passports'=>'passport/index',
     'admin2'=>'admin/level2',
     'errorAccess'=>'error/access',
