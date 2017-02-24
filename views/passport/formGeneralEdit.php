@@ -116,8 +116,7 @@ include_once ROOT . '/views/modules/userInfo.php';
                 data: msg,
                 success: function (data) {
                     $("#formGeneral").hide();
-
-                     $("#successGeneralForm").show();
+                    $("#successGeneralForm").show();
                 }
             });
 

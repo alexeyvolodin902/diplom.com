@@ -69,6 +69,7 @@ class PassportController
         if ($_SESSION['access'] < 2)
             header("Location:errorAccess");
         $info = Passports::getMainInfo($id);
+        $status = Passports::getStatusSection($id);
         
         require_once(ROOT . '/views/passport/editMenu.php');
         return true;
@@ -95,10 +96,28 @@ class PassportController
     /*Сохранение изменений основной информации паспорта*/
     public function methodEditGeneralSave($id)
     {
-        print_r($_POST);
+
         Passports::editGeneralInfo($id,$_POST['type'], $_POST['name'], $_POST['region'], $_POST['city'], $_POST['street'],
             $_POST['num_home'], $_POST['letter'], $_POST['inv_num'],
             $_POST['kad_num'], date("Y-m-d", strtotime($_POST['inv_date'])), $_POST['idUser']);
+        return true;
+    }
+
+    /*Редактирование информации состава*/
+    public function methodEditCharacter($id)
+    {
+        $title = "Редактирование состава технического паспорта: $id";
+        session_start();
+        if (!isset($_SESSION['access']))
+            header("Location:auth");
+        $userInfo = Users::getUserInfoByLogin($_SESSION['login']);
+        $idRegion = $userInfo['id_region'];
+        $userRegion = Regions::getNameById($idRegion);
+        if ($_SESSION['access'] < 2)
+            header("Location:errorAccess");
+        $uses = Passports::GetUseObjectList();
+       
+        require_once(ROOT . '/views/passport/formCharacterEdit.php');
         return true;
     }
 }

@@ -73,4 +73,30 @@ class Passports
         return true;
 
     }
+
+    /*Получение статуса заполненности разделов паспорта по id*/
+    public static function getStatusSection($id)
+    {
+        $db = DB::getConnection();
+        $sql = "SELECT fullComposition FROM passports WHERE id=?";
+        $result = $db->prepare($sql);
+        $result->execute(array($id));
+        return $result->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    /*Получение списка видов назначения объектов*/
+    public static function GetUseObjectList()
+    {
+        $uses = array();
+        $db = DB::getConnection();
+        $sql = "SELECT * FROM use_object";
+        $result = $db->query($sql);
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $uses[$i]['id'] = $row['id'];
+            $uses[$i]['name'] = $row['name'];
+            $i++;
+        }
+        return $uses;
+    }
 }

@@ -261,11 +261,13 @@ main {
   line-height: 30px;
   margin: 30px 0 0 100px;
 }
+
 .errorForm {
   font-size: 8pt;
   padding-bottom: 10px;
   color: red;
 }
+
 #questionForm {
 
   border-radius: 15px;
@@ -302,7 +304,7 @@ main {
     margin-top: 10px;
     font-size: 10pt;
     padding-left: 25%;
-    border:none;
+    border: none;
   }
   button {
     height: 40px;
@@ -498,10 +500,9 @@ main {
 
 }
 
-
 /*Форма общих сведений*/
 
-#formGeneral {
+#formGeneral, #formCharacter {
   width: 70%;
   padding: 30px 0;
   margin: 0 auto;
@@ -530,11 +531,13 @@ main {
     font-size: 15pt;
   }
 }
-.separator{
+
+.separator {
   color: gray;
   font-size: 15pt;
 }
-#successGeneralForm{
+
+#successGeneralForm, #successCharacterForm {
   display: none;
   text-align: center;
   background: $backgroundWhite;
@@ -542,36 +545,36 @@ main {
   padding: 20px 20px 10px 20px;
   margin: 30px auto;
   border-radius: 15px;
-  a{
+  a {
     display: block;
     margin: 10px auto;
     height: 30px;
     line-height: 30px;
   }
-  #editSuccess{
-    color:#7bad1a;
+  #editSuccess {
+    color: #7bad1a;
     font-weight: bold;
   }
 }
 
-
 /*Меню редактирования паспорта*/
-#passportInfo{
+#passportInfo {
   width: 80%;
   background: $backgroundWhite;
   margin: 0 auto;
   padding: 10px 20px;
   border-radius: 10px;
   border: 1px solid gray;
-  font-weight:bold ;
+  font-weight: bold;
 
-  span:nth-child(2n){
-    float:right;
+  span:nth-child(2n) {
+    float: right;
   }
 }
+
 #editMenuList {
   text-align: center;
-margin-bottom:30px ;
+  margin-bottom: 30px;
   a {
     display: block;
     padding: 10px 0;

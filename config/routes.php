@@ -1,6 +1,7 @@
 <?php
 
 return array(
+    'passportEditCharacter/([0-9]+)'=>'passport/editCharacter/$1',
     'passportsEditGeneralSave/([0-9]+)'=>'passport/editGeneralSave/$1',
     'passportEditGeneral/([0-9]+)'=>'passport/editGeneral/$1',
     'passportsNew'=>'passport/new',
